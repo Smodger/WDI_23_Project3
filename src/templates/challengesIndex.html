@@ -1,1 +1,5 @@
-<h1>Template. This works.</h1>
+<div class="challenges" ng-controller="ChallengesIndexController as challenges">
+  <ul>
+    <li ng-repeat="challenge in challenges.all"><img ng-src="{{ challenge.image }}">{{ challenge.name }}</li>
+  </ul>
+</div>

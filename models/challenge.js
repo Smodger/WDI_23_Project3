@@ -7,6 +7,8 @@ const challengeSchema = new mongoose.Schema({
   cost: { type: String, required: true },
   location: { lat: Number, lng: Number },
   description: { type: String, required: true },
+  image: { type: String },
+  video: { type: String },
   like: { type: Number, required: true }
 });
 
