@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
 const userFeedback = new mongoose.Scema({
-  feedback: String
+  giver: { type: String },
+  feedback: { type: String },
+  date: { type: Date }
 });
 
-module.exports = mongoose.model('Feedback', userFeedback);
+module.exports = mongoose.model('userFeedback', userFeedback);
