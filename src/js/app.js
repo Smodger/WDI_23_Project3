@@ -41,10 +41,20 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: '/templates/home.html'
       // controller: 'HomeController as home'
     })
-    .state('indexProfile', {
+    .state('usersIndex', {
       url: '/challengers',
-      templateUrl: '/templates/indexProfile.html',
+      templateUrl: '/templates/usersIndex.html',
       controller: 'UsersIndexController as usersIndex'
+    })
+    .state('usersEdit', {
+      url: '/challenger/:id/edit',
+      templateUrl: '/templates/usersEdit.html',
+      controller: 'UsersEditController as usersEdit'
+    })
+    .state('usersShow', {
+      url: '/challengers/:id',
+      templateUrl: '/templates/usersShow.html',
+      controller: 'UsersShowController as usersShow'
     });
 
   $urlRouterProvider.otherwise('/challenges');
