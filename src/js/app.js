@@ -35,7 +35,18 @@ function Router($stateProvider, $urlRouterProvider) {
       url: '/login',
       templateUrl: '/templates/login.html',
       controller: 'LoginController as login'
+    })
+    .state('home', {
+      url: '/',
+      templateUrl: '/templates/home.html',
+      controller: 'HomeController as home'
+    })
+    .state('challengersIndex', {
+      url: '/challengers',
+      templateUrl: '/templates/indexProfile.html',
+      controller: 'HomeController as home'
     });
+
 
   $urlRouterProvider.otherwise('/challenges');
 }
