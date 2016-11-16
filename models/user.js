@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   coverPhoto: { type: String, required: true },
   profilePhoto: { type: String, required: true },
   viedo: { type: String },
-  images: [userImages.schema]
+  images: [ userImages.schema ]
 });
 
 
