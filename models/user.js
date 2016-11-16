@@ -1,6 +1,7 @@
 const mongoose  = require('mongoose');
 const bcrypt    = require('bcrypt');
 const userImages = require('./user_images');
+const userFeedback = require('./user_images');
 
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true, required: true },
@@ -8,10 +9,11 @@ const userSchema = new mongoose.Schema({
   passwordHash: { type: String },
   dob: { type: String, required: true },
   bio: { type: String },
-  coverPhoto: { type: String, required: true },
-  profilePhoto: { type: String, required: true },
+  coverPhoto: { type: String },
+  profilePhoto: { type: String },
   viedo: { type: String },
-  images: [ userImages.schema ]
+  images: [userImages.schema],
+  feedback: [userFeedback.schema]
 });
 
 
