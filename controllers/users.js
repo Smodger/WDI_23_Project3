@@ -27,16 +27,16 @@ function usersShow(req, res) {
 
 //UPDATE
 function usersUpdate(req, res) {
-  User.findByIdAndUpdate(req.params.id, (err, user) => {
+  User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, user) => {
     if (err) return res.status(500).json({error: err});
     if (!user) return res.status(404).json({error: 'NOT FOUND!'});
-    return res.status(200).json(user);
+    return res.status(200).json({ user });
   });
 }
 
 //DELETE
 function usersDelete(req, res) {
-  User.findByIdAndRemove(res.params.id, (err, user) => {
+  User.findByIdAndRemove(req.params.id, (err, user) => {
     if (err) return res.status(500).json({error: err});
     if (!user) return res.status(404).json({error: 'NOT FOUND!'});
     return res.status(204).send();
