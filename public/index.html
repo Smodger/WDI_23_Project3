@@ -11,24 +11,24 @@
   <body ng-controller="MainController as main">
     <div class="holder">
       <img src="/images/bg.jpg" class="hero">
-      <div class="overlay">
-        <div class="container">
-          <h1 ui-sref="home" ui-sref-active="active">Go.</h1>
-
+    </div>
+    <div class="overlay">
+      <div class="container">
+        <h1 ui-sref="home" ui-sref-active="active">Go.</h1>
+        <header>
           <nav>
             <ul>
               <li ui-sref="challengesIndex" ui-sref-active="active">Challenges</li>
-              <li ui-sref="indexProfile" ui-sref-active="active">Challengers</li>
+              <li ui-sref="usersIndex" ui-sref-active="active">Active Participants</li>
             </ul>
           </nav>
-
           <div class="register">
             <a ui-sref="login">Sign in</a> | <a ui-sref="register">Register</a> | <a ng-click="main.logout()">Sign out</a>
           </div>
+        </header>
+        <div class="container content" ui-view>
         </div>
       </div>
-    </div>
-    <div class="container content" ui-view>
     </div>
   </body>
 </html>

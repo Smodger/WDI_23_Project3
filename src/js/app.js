@@ -53,7 +53,7 @@ function Router($stateProvider, $urlRouterProvider) {
     })
     .state('usersShow', {
       url: '/challengers/:id',
-      templateUrl: '/templates/usersEdit.html',
+      templateUrl: '/templates/usersShow.html',
       controller: 'UsersShowController as usersShow'
     });
 
