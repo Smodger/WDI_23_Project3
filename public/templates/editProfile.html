@@ -1,40 +1,57 @@
 <h1>Edit Profile</h1>
-<div class="container">
-  <form>
+<div class="container" ng-controller="UsersEditController as usersEdit">
+  <form ng-submit="usersEdit.edit">
     <div class="row">
       <div class="six columns">
-        <label for="username">Username</label>
-        <input class="u-full-width" placeholder="username">
+        <label for="name">Username</label>
+        <input class="u-full-width" name="name" id="name" ng-model="usersEdit.user.name" placeholder="username">
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
-        <label for="username">Email</label>
-        <input class="u-full-width" placeholder="Email">
+        <label for="email">Email</label>
+        <input class="u-full-width" name="email" id="email" ng-model="usersEdit.user.email" placeholder="Email">
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
-        <label for="username">Bio</label>
-        <textarea class="u-full-width" placeholder="Bio...">
+        <label for="bio">Bio</label>
+        <textarea class="u-full-width" name="bio" id="bio" ng-model="usersEdit.user.bio" placeholder="Bio...">
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
-        <label for="username">Cover Photo</label>
-        <textarea class="u-full-width" placeholder="Cover Photo">
+        <label for="cover">Cover Photo</label>
+        <textarea class="u-full-width" name="cover" id="cover" ng-model="usersEdit.user.cover" placeholder="Cover Photo">
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
-        <label for="username">Profile Photo</label>
-        <textarea class="u-full-width" placeholder="Profile Photo">
+        <label for="profilePhoto">Profile Photo</label>
+        <textarea class="u-full-width" name="profilePhoto" id="profilePhoto" ng-model="usersEdit.user.profilePhoto" placeholder="Profile Photo">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="six columns">
+        <label for="profileVideo">Profile Video</label>
+        <textarea class="u-full-width" name="profileVideo" id="profileVideo" ng-model="usersEdit.user.profileVideo" placeholder="Profile Video">
       </div>
     </div>
 
   </form>
 </div>
+
+
+<!-- username: { type: String, unique: true, required: true },
+  email: { type: String, unique: true, required: true },
+  passwordHash: { type: String },
+  dob: { type: String, required: true },
+  bio: { type: String },
+  coverPhoto: { type: String },
+  profilePhoto: { type: String },
+  viedo: { type: String }, -->
