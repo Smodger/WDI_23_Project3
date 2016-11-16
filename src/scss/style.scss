@@ -1,3 +1,21 @@
+@import 'variables';
+@import 'partials';
+@import 'mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: teal;
 }
+
+@import 'layout';
+@import 'login';
+@import 'register';
+@import 'profiles';
+@import 'challenges';
+@import 'caseStudy';
+
+// END OF FILE
