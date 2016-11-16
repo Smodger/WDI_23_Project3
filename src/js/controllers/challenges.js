@@ -26,6 +26,7 @@ function ChallengesNewController(Challenge, $state) {
   challengesNew.create = create;
 }
 
+//SHOW
 ChallengesShowController.$inject = ['Challenge', '$state', '$auth'];
 function ChallengesShowController(Challenge, $state, $auth) {
   const challengesShow = this;
