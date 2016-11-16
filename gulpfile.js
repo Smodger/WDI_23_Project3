@@ -61,13 +61,22 @@ gulp.task('scripts', () => {
 // styles
 gulp.task('styles', () => {
   return gulp.src('src/scss/style.scss')
-    .pipe(plumber())
-    .pipe(sass())
+    // .pipe(plumber())
+    // .pipe(sass())
     .pipe(sourcemaps.init())
+    // .pipe(plumber())
+    // .pipe(cleanCSS({ compatibility: 'ie8' }))
+    // .pipe(sourcemaps.write('./'))
+    // .pipe(gulp.dest('public/css'))
+    // .pipe(livereload());
+
+    .pipe(sass().on('error', sass.logError))
+		.pipe(cleanCSS({ compatibility: "ie8"}))
     .pipe(plumber())
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
+    .pipe(flatten())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('public/css'));
+    .pipe(gulp.dest(`public/css/`))
+    .pipe(livereload());
 });
 
 // images

@@ -1,0 +1,24 @@
+header {
+  h1 {
+    text-align: center;
+  }
+  nav ul {
+    list-style: none;
+    li {
+      float:left;
+      list-style: none;
+      a {
+        padding: 20px;
+      }
+    }
+  }
+  nav .register {
+    text-align: right;
+  }
+  &:after {
+    content: ' ';
+    clear:both;
+    display: block;
+  }
+}
+// 
