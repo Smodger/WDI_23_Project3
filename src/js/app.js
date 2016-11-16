@@ -38,15 +38,14 @@ function Router($stateProvider, $urlRouterProvider) {
     })
     .state('home', {
       url: '/',
-      templateUrl: '/templates/home.html',
-      controller: 'HomeController as home'
+      templateUrl: '/templates/home.html'
+      // controller: 'HomeController as home'
     })
-    .state('challengersIndex', {
+    .state('indexProfile', {
       url: '/challengers',
       templateUrl: '/templates/indexProfile.html',
-      controller: 'HomeController as home'
+      controller: 'UsersIndexController as usersIndex'
     });
-
 
   $urlRouterProvider.otherwise('/challenges');
 }

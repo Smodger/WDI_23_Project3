@@ -40,7 +40,6 @@ function ChallengesShowController(Challenge, $state, $auth) {
   }
 
   challengesShow.isLoggedIn = $auth.isAuthenticated;
-
   challengesShow.delete = deleteChallenge;
 }
 
@@ -57,5 +56,4 @@ function ChallengesEditController(Challenge, $state) {
   }
 
   this.update = update;
-
 }

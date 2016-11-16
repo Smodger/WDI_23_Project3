@@ -6,8 +6,10 @@ const challengeSchema = new mongoose.Schema({
   finishDate: { type: String },
   cost: { type: String, required: true },
   location: { lat: Number, lng: Number },
-  description: { type: String },
-  like: { type: Number }
+  description: { type: String, required: true },
+  image: { type: String },
+  video: { type: String },
+  like: { type: Number, required: true }
 });
 
 module.exports = mongoose.model('Challenge', challengeSchema);

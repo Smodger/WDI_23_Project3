@@ -8,7 +8,7 @@
     <script src="/js/vendor.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
-  <body>
+  <body ng-controller="MainController as main">
     <div class="holder">
       <img src="/images/bg.jpg" class="hero">
       <div class="overlay">
@@ -18,12 +18,12 @@
           <nav>
             <ul>
               <li ui-sref="challengesIndex" ui-sref-active="active">Challenges</li>
-              <li ui-sref="challengesIndex" ui-sref-active="active">Challengers</li>
+              <li ui-sref="indexProfile" ui-sref-active="active">Challengers</li>
             </ul>
           </nav>
 
           <div class="register">
-            <a ui-sref="login">Sign in</a> | <a ui-sref="register">Register</a>
+            <a ui-sref="login">Sign in</a> | <a ui-sref="register">Register</a> | <a ng-click="main.logout()">Sign out</a>
           </div>
         </div>
       </div>
