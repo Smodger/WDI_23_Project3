@@ -1,11 +1,20 @@
 const mongoose  = require('mongoose');
 const bcrypt    = require('bcrypt');
+const userImages = require('./user_images');
 
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
-  passwordHash: { type: String }
+  passwordHash: { type: String },
+  dob: { type: String, required: true },
+  bio: { type: String },
+  coverPhoto: { type: String, required: true },
+  profilePhoto: { type: String, required: true },
+  viedo: { type: String },
+  images: [userImages.schema]
 });
+
+
 
 function setPassword(value){
   this._password = value;
