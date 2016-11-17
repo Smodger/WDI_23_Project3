@@ -1,3 +1,7 @@
+textarea {
+  color: black;
+}
+
 button {
   width: 100%;
   color: #fff !important;
@@ -6,4 +10,11 @@ button {
 
 input {
   color: $c_secondary;
+}
+
+.usersEditForm {
+  color: black;
+  textarea {
+    color: black;
+  }
 }

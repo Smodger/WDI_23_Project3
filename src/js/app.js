@@ -3,6 +3,8 @@ angular
   .config(Router)
   .config(Auth);
 
+const cuInfo = {};
+
 Router.$inject = ['$stateProvider', '$urlRouterProvider'];
 function Router($stateProvider, $urlRouterProvider) {
   $stateProvider
