@@ -11,6 +11,7 @@ function ChallengesIndexController(Challenge) {
   challengesIndex.all = Challenge.query();
 }
 
+
 ChallengesNewController.$inject = ['Challenge', '$state'];
 function ChallengesNewController(Challenge, $state) {
   const challengesNew = this;
