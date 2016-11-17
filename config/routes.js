@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const authController = require('../controllers/auth');
 const users = require('../controllers/users');
+const challenges = require('../controllers/challenges');
 
 router
   .post('/login', authController.login)
@@ -13,5 +14,9 @@ router.route('/users/:id')
   .get(users.show)
   .put(users.update)
   .delete(users.delete);
+
+router.route('/challenges')
+  .get(challenges.index)
+  .post(challenges.create);
 
 module.exports = router;
