@@ -5,12 +5,10 @@ MainController.$inject = ['$auth', '$state'];
 function MainController($auth, $state) {
   const main = this;
 
-  console.log($auth.getPayload());
-  const tokenInfo = $auth.getPayload();
-  main.currentUser = tokenInfo._id;
   main.isLoggedIn = $auth.isAuthenticated;
 
-  console.log(main.currentUser);
+  main.currentUser = $auth.getPayload();
+
   function logout() {
     $auth.logout()
       .then(() => {
