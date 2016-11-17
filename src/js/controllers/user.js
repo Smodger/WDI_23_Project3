@@ -10,6 +10,7 @@ UsersIndexController.$inject = ['User'];
 function UsersIndexController(User) {
   const usersIndex = this;
   usersIndex.all = User.query();
+  console.log(usersIndex.user);
 }
 
 //CREATE
@@ -51,6 +52,8 @@ function UsersShowController(User, $state, $auth) {
     }
   }
 
+  usersShow.user = User.get($state.params);
+  console.log(usersShow.user);
   function deleteUser() {
     usersShow.user.$remove(() => {
       $state.go('usersIndex');
@@ -63,11 +66,12 @@ function UsersShowController(User, $state, $auth) {
 }
 
 //EDIT
-UsersEditController.$inject = ['User', '$state'];
-function UsersEditController(User, $state) {
+UsersEditController.$inject = ['User', '$state', '$auth'];
+function UsersEditController(User, $state, $auth) {
   const usersEdit = this;
+  usersEdit.user = User.get({ id: $auth.getPayload()._id });
 
-  usersEdit.user = User.get($state.params);
+  console.log(usersEdit.user);
 
   function update() {
     usersEdit.user.$update(() => {
@@ -75,5 +79,5 @@ function UsersEditController(User, $state) {
     });
   }
 
-  this.update = update;
+  usersEdit.update = update;
 }

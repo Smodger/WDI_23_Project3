@@ -3,6 +3,8 @@ angular
   .config(Router)
   .config(Auth);
 
+const cuInfo = {};
+
 Router.$inject = ['$stateProvider', '$urlRouterProvider'];
 function Router($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -47,7 +49,7 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'UsersIndexController as usersIndex'
     })
     .state('usersEdit', {
-      url: '/challenger/:id/edit',
+      url: '/challengers/:id/edit',
       templateUrl: '/templates/usersEdit.html',
       controller: 'UsersEditController as usersEdit'
     })
