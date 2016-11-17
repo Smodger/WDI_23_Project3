@@ -5,11 +5,15 @@
     <!-- ADD NG IF active challenges length > 0 -->
     <li ng-repeat="user in users.all" class="columns four profile">
       <div class="photo">
-        <img ng-src="{{ user.profilePhoto }}" alt="" />
+        <a ui-sref="usersShow({ id: user._id })">
+          <img ng-src="{{ user.profilePhoto }}" alt="" />
+        </a>
       </div>
       <h3>{{ user.username }}</h3>
       <p>Age: {{ user.dob }} {{user.gender}}<br> {{ user.straline }}</p>
-      <a ui-sref="/challengers/{{ user._id }}">View Profile</a>
+      <a ui-sref="usersShow({ id: user._id })">
+        View Profile
+      </a>
       <div class="activeChallenge">
         {{ user.activeChallenges }}
       </div>
