@@ -8,7 +8,8 @@ router
   .post('/register', authController.register);
 
 router.route('/users')
-  .get(users.index);
+  .get(users.index)
+  .post(users.create);
 
 router.route('/users/:id')
   .get(users.show)
