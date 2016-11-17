@@ -1,6 +1,6 @@
 
-@mixin basicAbsolute {
+@mixin basicAbsolute($top, $left) {
   position: absolute;
-    top: 0;
-    left: 0;
+    top: $top;
+    left: $left;
 }

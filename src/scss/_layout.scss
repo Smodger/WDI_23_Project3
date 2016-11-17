@@ -4,7 +4,7 @@
   width: 100vw;
 
   overflow: hidden;
-  @include basicAbsolute;
+  @include basicAbsolute(0,0);
 
   img.hero {
     min-height: 100%;
@@ -18,10 +18,41 @@
 .overlay {
   width: 100%;
 
-    @include basicAbsolute;
+    @include basicAbsolute(0,0);
 }
 
 //Comment
 .content {
 
+}
+
+
+// User index list
+
+ul.gridList {
+  list-style: none;
+  li {
+    list-style: none;
+  }
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+
+  .photo {
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding-bottom: 100%;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 50%;
+    img {
+      width:100%;
+
+        @include basicAbsolute(0,0);
+    }
+  }
 }

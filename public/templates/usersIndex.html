@@ -1,5 +1,18 @@
 <div ng-controller="UsersIndexController as users">
-  <ul>
-    <li ng-repeat="user in users.all">{{ user.username }}</li>
+  <h1>Active Challengers</h1>
+
+  <ul class="gridList row">
+    <!-- ADD NG IF active challenges length > 0 -->
+    <li ng-repeat="user in users.all" class="columns four profile">
+      <div class="photo">
+        <img ng-src="{{ user.profilePhoto }}" alt="" />
+      </div>
+      <h3>{{ user.username }}</h3>
+      <p>Age: {{ user.dob }} {{user.gender}}<br> {{ user.straline }}</p>
+      <a ui-sref="/challengers/{{ user._id }}">View Profile</a>
+      <div class="activeChallenge">
+        {{ user.activeChallenges }}
+      </div>
+    </li>
   </ul>
 </div>
