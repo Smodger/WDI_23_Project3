@@ -31,14 +31,24 @@ UsersShowController.$inject = ['User', '$state', '$auth'];
 function UsersShowController(User, $state, $auth) {
   const usersShow = this;
 
-  usersShow.user = User.get($state.params);
-  usersShow.authUser = $auth.getPayload().id;
-  console.log(usersShow.authUser);
-  function userLikes() {
+  usersShow.user = User.get($state.params, (data) => {
+    data.likes.push(usersShow.authUser);
+    data.totalLikes = data.likes.length;
+  });
+  usersShow.authUser = $auth.getPayload()._id;
 
-    console.log(usersShow.authUser, usersShow.user.likes);
-    usersShow.user.like ;
-    usersShow.user.$update();
+  // usersShow.user.totalLikes = usersShow.user.likes.length();
+
+  console.log(usersShow.user);
+
+  function userLikes() {
+    if (!usersShow.user.likes.includes(usersShow.authUser)) {
+      usersShow.user = User.get($state.params, (data) => {
+        data.likes.push(usersShow.authUser);
+        data.totalLikes = data.likes.length;
+      });
+      usersShow.user.$update();
+    }
   }
 
   function deleteUser() {

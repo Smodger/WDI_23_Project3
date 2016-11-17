@@ -9,12 +9,12 @@
         <a ui-sref="usersShow({ id: user._id })">
           <img ng-src="{{ user.profilePhoto || 'http://image.shutterstock.com/z/stock-vector-man-silhouette-profile-picture-vector-151265393.jpg' }}" alt="" />
           <div class="overlay">
-            Likes: {{ user.like }}
+            Likes: {{ user.likes.length }}
           </div>
         </a>
       </div>
       <h3>{{ user.username }}</h3>
-      <p>Age: {{ user.dob }} {{ user.gender }}<br> {{ user.straline }}</p>
+      <p>Age: {{ user.dob }} {{ user.gender }}<br> {{ user.strapline }}</p>
       <a ui-sref="usersShow({ id: user._id })">
         View Profile
       </a>
