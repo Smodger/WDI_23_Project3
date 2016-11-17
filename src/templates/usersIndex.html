@@ -7,6 +7,9 @@
       <div class="photo">
         <a ui-sref="usersShow({ id: user._id })">
           <img ng-src="{{ user.profilePhoto }}" alt="" />
+          <div class="overlay">
+            {{ user.likes }}
+          </div>
         </a>
       </div>
       <h3>{{ user.username }}</h3>
