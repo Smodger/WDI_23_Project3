@@ -1,0 +1,25 @@
+.futureChallenge {
+  display: inline-block;
+  margin: 50px;
+  a {
+    text-align: center;
+    display: block;
+    color: black;
+  }
+  img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+.challenges {
+  ul {
+    list-style: none;
+  }
+}
+
+.currentChallenge {
+  a {
+    display: block;
+  }
+}

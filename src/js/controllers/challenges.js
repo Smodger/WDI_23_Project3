@@ -30,7 +30,9 @@ function ChallengesNewController(Challenge, $state) {
 //SHOW
 ChallengesShowController.$inject = ['Challenge', '$state', '$auth'];
 function ChallengesShowController(Challenge, $state, $auth) {
+
   const challengesShow = this;
+
   challengesShow.challenge = Challenge.get($state.params);
 
   function deleteChallenge() {
