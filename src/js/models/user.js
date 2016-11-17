@@ -7,5 +7,3 @@ function User($resource) {
     update: { method: 'PUT' }
   });
 }
-
-// comm
