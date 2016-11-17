@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   bio: { type: String },
   coverPhoto: { type: String },
   profilePhoto: { type: String },
-  viedo: { type: String },
+  video: { type: String },
   activeChallenges: [{ type: String }],
   images: [userImages.schema],
   feedback: [userFeedback.schema]

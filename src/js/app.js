@@ -47,7 +47,7 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'UsersIndexController as usersIndex'
     })
     .state('usersEdit', {
-      url: '/challenger/:id/edit',
+      url: '/challengers/:id/edit',
       templateUrl: '/templates/usersEdit.html',
       controller: 'UsersEditController as usersEdit'
     })
