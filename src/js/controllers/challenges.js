@@ -42,7 +42,6 @@ function ChallengesShowController(Challenge, $state, $auth) {
   }
 
   function challengeLike() {
-    console.log(challengesShow.challenge.like);
     challengesShow.challenge.like ++;
     challengesShow.challenge.$update();
   }

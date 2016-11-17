@@ -32,6 +32,25 @@ UsersShowController.$inject = ['User', '$state', '$auth'];
 function UsersShowController(User, $state, $auth) {
   const usersShow = this;
 
+  usersShow.user = User.get($state.params, (data) => {
+    data.likes.push(usersShow.authUser);
+    data.totalLikes = data.likes.length;
+  });
+  usersShow.authUser = $auth.getPayload()._id;
+
+  // usersShow.user.totalLikes = usersShow.user.likes.length();
+
+  console.log(usersShow.user);
+
+  function userLikes() {
+    if (!usersShow.user.likes.includes(usersShow.authUser)) {
+      usersShow.user = User.get($state.params, (data) => {
+        data.likes.push(usersShow.authUser);
+        data.totalLikes = data.likes.length;
+      });
+      usersShow.user.$update();
+    }
+  }
 
   usersShow.user = User.get($state.params);
   console.log(usersShow.user);
@@ -41,6 +60,7 @@ function UsersShowController(User, $state, $auth) {
     });
   }
 
+  usersShow.incrementLikes = userLikes;
   usersShow.isLoggedIn = $auth.isAuthenticated;
   usersShow.delete = deleteUser;
 }

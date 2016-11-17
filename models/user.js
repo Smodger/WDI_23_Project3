@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
   coverPhoto: { type: String },
   profilePhoto: { type: String },
   video: { type: String },
+  likes: [{ userId: String }],
   activeChallenges: [{ type: String }],
   images: [userImages.schema],
   feedback: [userFeedback.schema]
