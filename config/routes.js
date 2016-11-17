@@ -8,7 +8,8 @@ router
   .post('/register', authController.register);
 
 router.route('/users')
-  .get(users.index);
+  .get(users.index)
+  .post(users.create);
 
 router.route('/users/:id')
   .get(users.show)
@@ -18,5 +19,10 @@ router.route('/users/:id')
 router.route('/challenges')
   .get(challenges.index)
   .post(challenges.create);
+
+router.route('/challenges/:id')
+  .get(challenges.show)
+  .put(challenges.update)
+  .delete(challenges.delete);
 
 module.exports = router;

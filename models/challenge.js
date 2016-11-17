@@ -9,7 +9,9 @@ const challengeSchema = new mongoose.Schema({
   description: { type: String, required: true },
   image: { type: String },
   video: { type: String },
-  like: { type: Number, required: true }
+  like: { type: Number },
+  projectCreator: { type: String },
+  comments: { type: String }
 });
 
 module.exports = mongoose.model('Challenge', challengeSchema);

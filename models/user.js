@@ -8,10 +8,13 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   passwordHash: { type: String },
   dob: { type: String },
+  gender: { type: String },
+  strapline: { type: String },
   bio: { type: String },
   coverPhoto: { type: String },
   profilePhoto: { type: String },
   viedo: { type: String },
+  activeChallenges: [{ type: String }],
   images: [userImages.schema],
   feedback: [userFeedback.schema]
 });
