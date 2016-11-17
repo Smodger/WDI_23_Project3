@@ -1,31 +1,34 @@
-<h1>Edit Profile</h1>
+<h1>Edit Your Profile</h1>
+
 <div class="container" ng-controller="UsersEditController as usersEdit">
+
   <form ng-submit="usersEdit.edit">
+
     <div class="row">
       <div class="six columns">
         <label for="name">Username</label>
-        <input class="u-full-width" name="name" id="name" ng-model="usersEdit.user.name" placeholder="username">
+        <input class="u-full-width" name="name" id="name" ng-model="usersEdit.user.name">
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
         <label for="email">Email</label>
-        <input class="u-full-width" name="email" id="email" ng-model="usersEdit.user.email" placeholder="Email">
+        <input class="u-full-width" name="email" id="email" ng-model="usersEdit.user.email">
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
         <label for="bio">Bio</label>
-        <textarea class="u-full-width" name="bio" id="bio" ng-model="usersEdit.user.bio" placeholder="Bio...">
+        <textarea class="u-full-width" name="bio" id="bio" ng-model="usersEdit.user.bio">
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
-        <label for="cover">Cover Photo</label>
-        <textarea class="u-full-width" name="cover" id="cover" ng-model="usersEdit.user.cover" placeholder="Cover Photo">
+        <label for="dob">dob</label>
+        <input class="u-full-width" name="dob" id="cover" ng-model="usersEdit.user.dob">
       </div>
     </div>
 
@@ -42,6 +45,8 @@
         <textarea class="u-full-width" name="profileVideo" id="profileVideo" ng-model="usersEdit.user.profileVideo" placeholder="Profile Video">
       </div>
     </div>
+
+    <button>Submit</button>
 
   </form>
 </div>

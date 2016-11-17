@@ -48,6 +48,8 @@ UsersEditController.$inject = ['User', '$state'];
 function UsersEditController(User, $state) {
   const usersEdit = this;
 
+  console.log($state);
+  console.log($state.params);
   usersEdit.user = User.get($state.params);
 
   function update() {

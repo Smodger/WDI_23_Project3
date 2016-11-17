@@ -28,10 +28,18 @@
                   Active Participants
                 </a>
               </li>
+              <!-- {{ main.currentUser._id }} -->
+              <li>
+                <a ui-sref="usersEdit({ id: main.currentUser._id })" ui-sref-active="active">
+                  Edit User Settings
+                </a>
+              </li>
             </ul>
             <div class="register columns six">
               <a ui-sref="login">Sign in</a> | <a ui-sref="register">Register</a> | <a ng-click="main.logout()">Log out</a>
             </div>
+
+
           </nav>
         </header>
         <div class="content" ui-view>
