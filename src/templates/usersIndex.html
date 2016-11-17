@@ -1,5 +1,5 @@
 <div ng-controller="UsersIndexController as users">
   <ul>
-    <li ng-repeat="user in users.all">{{ user.username }}</li>
+    <li ng-repeat="user in users.all">{{ user.username }} {{ user._id }}</li>
   </ul>
 </div>
