@@ -7,8 +7,7 @@
   @include basicAbsolute(0,0);
 
   img.hero {
-    min-height: 100%;
-    min-width: 100%;
+    width: 100%;
 
     margin: 0;
     padding: 0;
@@ -21,17 +20,14 @@
     @include basicAbsolute(0,0);
 }
 
-//Comment
-.content {
-
-}
-
-
 // User index list
 
 ul.gridList {
   list-style: none;
   li {
+    width:32%;
+
+    float: left;
     list-style: none;
   }
 }
@@ -41,9 +37,9 @@ ul.gridList {
   margin-bottom: 40px;
 
   .photo {
-    width: 100%;
-    margin: 0 0 20px 0;
-    padding-bottom: 100%;
+    width: 70%;
+    margin: 0 auto 20px auto;
+    padding-bottom: 70%;
 
     position: relative;
     overflow: hidden;
