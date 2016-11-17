@@ -20,4 +20,9 @@ router.route('/challenges')
   .get(challenges.index)
   .post(challenges.create);
 
+router.route('/challenges/:id')
+  .get(challenges.show)
+  .put(challenges.update)
+  .delete(challenges.delete);
+
 module.exports = router;
