@@ -4,6 +4,7 @@
       <div class="photo">
         <img ng-src="{{ user.user.profilePhoto }}" width="100">
       </div>
+      <button ng-click="user.incrementLikes(user.user.like)">Likes: {{ user.user.likes }} </button>
     </div>
 
     <div class="seven columns">

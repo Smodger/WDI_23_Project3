@@ -32,6 +32,14 @@ function UsersShowController(User, $state, $auth) {
   const usersShow = this;
 
   usersShow.user = User.get($state.params);
+  usersShow.authUser = $auth.getPayload().id;
+  console.log(usersShow.authUser);
+  function userLikes() {
+
+    console.log(usersShow.authUser, usersShow.user.likes);
+    usersShow.user.like ;
+    usersShow.user.$update();
+  }
 
   function deleteUser() {
     usersShow.user.$remove(() => {
@@ -39,6 +47,7 @@ function UsersShowController(User, $state, $auth) {
     });
   }
 
+  usersShow.incrementLikes = userLikes;
   usersShow.isLoggedIn = $auth.isAuthenticated;
   usersShow.delete = deleteUser;
 }
