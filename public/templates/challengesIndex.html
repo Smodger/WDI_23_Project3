@@ -1,5 +1,5 @@
 <div class="challenges" ng-controller="ChallengesIndexController as challenges">
   <ul>
-    <li ng-repeat="challenge in challenges.all"><img ng-src="{{ challenge.image }}">{{ challenge.name }}</li>
+    <li ng-repeat="challenge in challenges.all"><img ng-src="{{ challenge.image }}"><a ui-sref="challengesShow({id:challenge._id})"><{{ challenge.name }}</a></li>
   </ul>
 </div>

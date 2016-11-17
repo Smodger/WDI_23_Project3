@@ -11,6 +11,7 @@ function ChallengesIndexController(Challenge) {
   challengesIndex.all = Challenge.query();
 }
 
+
 ChallengesNewController.$inject = ['Challenge', '$state'];
 function ChallengesNewController(Challenge, $state) {
   const challengesNew = this;
@@ -30,7 +31,6 @@ function ChallengesNewController(Challenge, $state) {
 ChallengesShowController.$inject = ['Challenge', '$state', '$auth'];
 function ChallengesShowController(Challenge, $state, $auth) {
   const challengesShow = this;
-
   challengesShow.challenge = Challenge.get($state.params);
 
   function deleteChallenge() {
@@ -39,6 +39,13 @@ function ChallengesShowController(Challenge, $state, $auth) {
     });
   }
 
+  function challengeLike() {
+    console.log(challengesShow.challenge.like);
+    challengesShow.challenge.like ++;
+    challengesShow.challenge.$update();
+  }
+
+  challengesShow.incrementLikes = challengeLike;
   challengesShow.isLoggedIn = $auth.isAuthenticated;
   challengesShow.delete = deleteChallenge;
 }
