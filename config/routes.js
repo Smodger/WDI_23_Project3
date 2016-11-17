@@ -16,6 +16,7 @@ router.route('/users/:id')
   .delete(users.delete);
 
 router.route('/challenges')
-  .get(challenges.index);
+  .get(challenges.index)
+  .post(challenges.create);
 
 module.exports = router;
