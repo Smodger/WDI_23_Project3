@@ -1,0 +1,39 @@
+.coverPhoto {
+  height: 250px;
+  background-position: center;
+  background-size: cover;
+}
+
+.profile-image {
+  margin-top: -90px;
+}
+
+.photo-stream {
+  &:nth-child(odd) {
+    margin-left: 0;
+    clear: left;
+  }
+}
+//
+// .profile {
+//   .photo{
+//     margin: 150px 0px 0px 30px;
+//     img{
+//     }
+//   }
+// }
+
+// .photoStream {
+//   // background-color: blue;
+//   .photo {
+//     border: 1px solid black;
+//     display: inline-block;
+//     float: left;
+//     width: calc(33% - 12px);
+//     margin: 0 5px 5px 5px;
+//     overflow: hidden;
+//     img {
+//       display: block;
+//     }
+//   }
+// }

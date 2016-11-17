@@ -1,20 +1,26 @@
 <div ng-controller="UsersShowController as user">
+
   <div class="row">
+    <div class="coverPhoto" style="background-image:url('{{ user.user.coverPhoto }}')">
+      <!-- <img ng-src="{{ user.user.coverPhoto }}" alt="" /> -->
+    </div>
+  </div>
+
+  <div class="row profile-image">
 
     <div class="three columns profile">
       <div class="photo">
-        <img ng-src="{{ user.user.profilePhoto }}" width="100">
+        <img ng-src="{{ user.user.profilePhoto }}">
       </div>
     </div>
 
-    <div class="seven columns">
+    <div class="nine columns">
       {{ user.user.video }}
     </div>
 
   </div>
-
   <div class="row">
-    <div class="eight columns">
+    <div class="six columns">
       <h1>{{ user.user.username }}</h1>
       <h2>{{ user.user.dob }} - {{ user.user.gender }}</h2>
       <h4>BIO</h4>
@@ -23,10 +29,12 @@
       </p>
     </div>
 
-    <div class="four columns photoStream">
+    <div class="six columns">
       <h2>User Photos</h2>
-      <div class="photo" ng-repeat="photo in user.user.images">
-        <img ng-src="{{ photo.image }}" width="100" >
+      <div class="row">
+        <div class="six columns photo-stream" ng-repeat="photo in user.user.images">
+          <img ng-src="{{ photo.image }}">
+        </div>
       </div>
     </div>
 
