@@ -6,15 +6,7 @@ const userFeedback = require('./user_images');
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
-  passwordHash: { type: String },
-  dob: { type: String },
-  gender: { type: String },
-  strapline: { type: String },
-  bio: { type: String },
-  coverPhoto: { type: String },
-  profilePhoto: { type: String },
-  video: { type: String },
-  likes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  // locked: { type: Boolean, default: true }, // Lock the User by Default
   activeChallenges: [{ type: String }],
   images: [userImages.schema],
   feedback: [userFeedback.schema]
