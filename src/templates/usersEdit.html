@@ -1,42 +1,42 @@
 <h1>Edit Your Profile</h1>
 
-<div class="container usersEditForm" ng-controller="UsersEditController as userEdit">
+<div class="container usersEditForm">
   <h2>dfghjdfhgjdh</h2>
-  {{ userEdit.user }}
+  {{ usersEdit.user }}
 
   <form ng-submit="usersEdit.update()">
     <div class="row">
       <div class="six columns">
         <label for="name">Username</label>
-        <input class="u-full-width" type="text" name="name" id="name" ng-model="userEdit.user.username" value="{{ userEdit.user.username }}">
+        <input class="u-full-width" type="text" name="name" id="name" ng-model="usersEdit.user.username" value="{{ usersEdit.user.username }}">
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
         <label for="email">Email</label>
-        <input class="u-full-width" type="email" name="email" id="email" ng-model="userEdit.user.email">
+        <input class="u-full-width" type="email" name="email" id="email" ng-model="usersEdit.user.email">
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
         <label for="bio">Bio</label>
-        <textarea class="u-full-width" name="bio" id="bio" ng-model="userEdit.user.bio"></textarea>
+        <textarea class="u-full-width" name="bio" id="bio" ng-model="usersEdit.user.bio"></textarea>
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
         <label for="dob">Date of birth</label>
-        <input class="u-full-width" type="text" name="dob" id="dob" ng-model="userEdit.user.dob">
+        <input class="u-full-width" type="text" name="dob" id="dob" ng-model="usersEdit.user.dob">
       </div>
     </div>
 
     <div class="row">
       <div class="six columns">
         <label for="profilePhoto">Profile Photo</label>
-        <textarea class="u-full-width" name="profilePhoto" id="profilePhoto" ng-model="userEdit.user.profilePhoto" placeholder="Profile Photo"></textarea>
+        <textarea class="u-full-width" name="profilePhoto" id="profilePhoto" ng-model="usersEdit.user.profilePhoto" placeholder="Profile Photo"></textarea>
       </div>
     </div>
 
