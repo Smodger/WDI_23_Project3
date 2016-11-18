@@ -23,6 +23,7 @@ router.route('/challenges')
 router.route('/challenges/:id')
   .get(challenges.show)
   .put(challenges.update)
+  .patch(challenges.update)
   .delete(challenges.delete);
 
 module.exports = router;

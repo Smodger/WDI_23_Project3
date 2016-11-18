@@ -11,7 +11,11 @@ const challengeSchema = new mongoose.Schema({
   video: { type: String },
   like: { type: Number },
   projectCreator: { type: String },
-  comments: { type: String }
+  comments: { type: String },
+  participants: {
+    data: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+    userId: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
+  }
 });
 
 module.exports = mongoose.model('Challenge', challengeSchema);

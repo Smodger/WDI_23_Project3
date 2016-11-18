@@ -24,6 +24,18 @@ function usersShow(req, res) {
     return res.json(user);
   });
 }
+//   }).populate('activeChallenges')
+//   .exec(function(err, user) {
+//     if(err) {
+//       console.log(err);
+//       return res.json(err);
+//     }
+//   }).then((user) => {
+//     console.log(user);
+//     return res.json(user);
+//   });
+// }
+
 
 //UPDATE
 function usersUpdate(req, res) {

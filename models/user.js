@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
   profilePhoto: { type: String },
   video: { type: String },
   likes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
-  activeChallenges: [{ type: String }],
+  activeChallenges: [{ type: mongoose.Schema.ObjectId, ref: 'Challenge' }],
   images: [userImages.schema],
   feedback: [userFeedback.schema]
 });
@@ -84,3 +84,6 @@ userSchema.set('toJSON', {
 });
 
 module.exports = mongoose.model('User', userSchema);
+
+
+// participants: ["582dc640f6e0254496198d34", "582ed371371260743000b7e0"]
