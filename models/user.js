@@ -4,6 +4,7 @@ const userImages = require('./user_images');
 const userFeedback = require('./user_images');
 
 const userSchema = new mongoose.Schema({
+  facebookId: { type: String },
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
   passwordHash: { type: String },

@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const authController = require('../controllers/auth');
+const oauthController = require('../controllers/oauth');
 const users = require('../controllers/users');
 const challenges = require('../controllers/challenges');
 
 router
   .post('/login', authController.login)
-  .post('/register', authController.register);
+  .post('/register', authController.register)
+  .post('/auth/facebook', oauthController.facebook);
 
 router.route('/users')
   .get(users.index)
