@@ -10,7 +10,6 @@ UsersIndexController.$inject = ['User'];
 function UsersIndexController(User) {
   const usersIndex = this;
   usersIndex.all = User.query();
-  console.log(usersIndex.user);
 }
 
 //CREATE
@@ -32,43 +31,45 @@ UsersShowController.$inject = ['User', '$state', '$auth'];
 function UsersShowController(User, $state, $auth) {
   const usersShow = this;
 
-  usersShow.user = User.get($state.params, (data) => {
-    data.likes.push(usersShow.authUser);
-    data.totalLikes = data.likes.length;
+  User.get($state.params, (data) => {
+    usersShow.user = data;
+    data.totalLikes = usersShow.user.likes.length;
+
+    usersShow.authUser = $auth.getPayload();
+
+    if (usersShow.authUser) {
+      usersShow.authUser = usersShow.authUser._id;
+    }
+
+    usersShow.incrementLikes = userLikes;
+    usersShow.isLoggedIn = $auth.isAuthenticated;
+    usersShow.delete = deleteUser;
   });
-  usersShow.authUser = $auth.getPayload()._id;
-
-  // usersShow.user.totalLikes = usersShow.user.likes.length();
-
-  console.log(usersShow.user);
 
   function userLikes() {
-    if (!usersShow.user.likes.includes(usersShow.authUser)) {
-      usersShow.user = User.get($state.params, (data) => {
-        data.likes.push(usersShow.authUser);
-        data.totalLikes = data.likes.length;
+    if (!usersShow.user.likes.includes(usersShow.authUser) && !!usersShow.authUser) {
+      usersShow.user.likes.push(usersShow.authUser);
+      // usersShow.user.$update();
+      console.log(usersShow.user);
+      usersShow.user.$update((data) => {
+        console.log(data);
       });
-      usersShow.user.$update();
     }
   }
 
-  usersShow.user = User.get($state.params);
-  console.log(usersShow.user);
+  // usersShow.user = User.get($state.params);
   function deleteUser() {
     usersShow.user.$remove(() => {
       $state.go('usersIndex');
     });
   }
-
-  usersShow.incrementLikes = userLikes;
-  usersShow.isLoggedIn = $auth.isAuthenticated;
-  usersShow.delete = deleteUser;
 }
 
 //EDIT
 UsersEditController.$inject = ['User', '$state', '$auth'];
 function UsersEditController(User, $state, $auth) {
   const usersEdit = this;
+
   usersEdit.user = User.get({ id: $auth.getPayload()._id });
 
   console.log(usersEdit.user);
