@@ -18,18 +18,27 @@ function RegisterController($auth, $state) {
   register.submit = submit;
 }
 
-LoginController.$inject = ['$auth', '$state'];
-function LoginController($auth, $state) {
+LoginController.$inject = ['$auth', '$state', 'User', 'user'];
+function LoginController($auth, $state, User, user) {
   const login = this;
 
   login.credentials = {};
 
   function submit() {
+    login.isLoggedIn = true;
+    console.log(login.isLoggedIn);
     $auth.login(login.credentials)
       .then(() => {
+        login.currentUser = $auth.getPayload();
+
+        if(login.currentUser) {
+          User.get({ id: login.currentUser._id }, (data) => {
+            user.account = data;
+            console.log(user.currentUser);
+          });
+        }
         $state.go('home');
       });
-
   }
   login.submit = submit;
 }
