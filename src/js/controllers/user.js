@@ -51,6 +51,16 @@ function UsersShowController(User, $state, $auth) {
     }
   }
 
+  // function userChallenges () {
+  //   usersShow.users.activeChallenges.data.push(usersShow.authUser);
+  //   usersShow.users.activeChallenges.userId.push(usersShow.authUser);
+  //   usersShow.users.$update((data) => {
+  //     console.log(data);
+  //   });
+  // }
+  //
+  // usersShow.userChallenges = userChallenges;
+
   // usersShow.user = User.get($state.params);
   function deleteUser() {
     usersShow.user.$remove(() => {
