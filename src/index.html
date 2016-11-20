@@ -14,45 +14,46 @@
       <img src="/images/bg.jpg" class="hero">
     </div>
     <div class="overlay" ng-controller="MainController as main">
-      <div class="container">
-        <header>
-          <nav class="row">
-            <ul class="columns six">
-              <li>
-                <a ui-sref="challengesIndex" ui-sref-active="active">
-                  Challenges
-                </a>
-              </li>
+      <header>
+        <nav class="row">
+          <ul class="columns six">
+            <li>
+              <a ui-sref="challengesIndex" ui-sref-active="active">
+                Challenges
+              </a>
+            </li>
 
-              <li>
-                <a ui-sref="usersIndex" ui-sref-active="active">
-                  Active Participants
-                </a>
-              </li>
+            <li>
+              <a ui-sref="usersIndex" ui-sref-active="active">
+                Active Participants
+              </a>
+            </li>
+          </ul>
+
+          <!-- MAINCONTROLLER NOW CONTAIN FUNCTIONALITY FOR DROP DOWN -->
+
+          <div class="columns six">
+            <ul>
+              <li><a ui-sref="login" ng-hide="profile.isLoggedIn()">Sign in</a></li>
+              <li><a ui-sref="register" ng-hide="profile.isLoggedIn()">Register</a></li>
             </ul>
-
-            <!-- MAINCONTROLLER NOW CONTAIN FUNCTIONALITY FOR DROP DOWN -->
-
-            <div class="account-wrapper" ng-click="main.toggleMenu()" ng-class="{ active: main.menuActive }" ng-hide="!profile.isLoggedIn()">
-
-              {{ profile.currentUser.username }}
-
+            <div class="account-wrapper" ng-click="main.toggleMenu()" ng-hide="!profile.isLoggedIn()">
               <img ng-src="{{ profile.currentUser.account.profilePhoto }}"/>
-              <ul class="menu">
-                <li><a ui-sref="usersEdit" class="profileButton">Edit details</a></li>
-                <li><a ng-click="profile.logout()" ng-hide="!profile.isLoggedIn()">Log out</a></li>
-              </ul>
+              <div class="username">{{ profile.currentUser.account.username }}</div>
             </div>
+            <ul class="menu" ng-class="{ active: main.menuActive }" ng-hide="!profile.isLoggedIn()">
+              <li class="close"><a ng-click="main.toggleMenu()">X</a></li>
+              <li><a ui-sref="usersEdit({ id: profile.currentUser.account._id })"  ng-click="main.toggleMenu()" class="profileButton">Edit details</a></li>
+              <li><a ng-click="profile.logout(); main.toggleMenu()" ng-hide="!profile.isLoggedIn()">Log out</a></li>
+            </ul>
+          </div>
 
-            <div class="register columns six">
-              <a ui-sref="login" ng-hide="profile.isLoggedIn()">Sign in |</a>
-              <a ui-sref="register" ng-hide="profile.isLoggedIn()">Register</a>
-            </div>
+        </nav>
+        <h1 ui-sref="home" ui-sref-active="active">Van Pelt's Dream Adventures</h1>
+      </header>
 
-          </nav>
-          <h1 ui-sref="home" ui-sref-active="active">Go.</h1>
 
-        </header>
+      <div class="container">
         <div class="content" ui-view>
         </div>
       </div>

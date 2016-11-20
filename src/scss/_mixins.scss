@@ -1,6 +1,21 @@
-
 @mixin basicAbsolute($top, $left) {
   position: absolute;
     top: $top;
     left: $left;
+}
+
+@mixin positioning($position, $top, $right, $bottom, $left) {
+  position: $position;
+    @if $top != 'null' {
+      top: $top;
+    }
+    @if $right != 'null' {
+      right: $right;
+    }
+    @if $bottom != 'null' {
+      bottom: $bottom;
+    }
+    @if $left != 'null' {
+      left: $left;
+    }
 }

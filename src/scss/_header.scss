@@ -2,16 +2,20 @@ header {
   h1 {
     margin: 30px 0px;
 
-    font-size:100px;
+    font-size:70px;
     text-align: center;
   }
-  nav ul {
-    list-style: none;
-    li {
-      float:left;
-      list-style: none;
-      a {
-        padding: 20px;
+  nav {
+    background-color: transparentize($c_secondary, 0.5);
+    ul {
+    @extend .reset-list;
+      li {
+        @extend .reset-list;
+        float:left;
+        a {
+          padding: 30px ;
+          display: block;
+        }
       }
     }
   }
@@ -24,4 +28,62 @@ header {
     display: block;
   }
 }
+
+
+
 //
+.account-wrapper {
+  width: 100%;
+  position: relative;
+  .username {
+    margin: 27px 0 0 0;
+    float: right;
+  }
+  img {
+    width: 50px;
+    height: 50px;
+    margin: 20px 20px 0px 15px;
+
+    border-radius: 50px;
+    float:right;
+  }
+}
+
+ul.menu {
+  @extend .reset-list;
+  height: 100%;
+  width: 100%;
+  padding: 50px;
+
+  background-color: $c-secondary;
+
+  opacity: 0;
+  @include positioning(absolute, -100%, 'null', 'null', 0px);
+  transition: all ease-in 0.4s;
+
+  li {
+    @extend .reset-list;
+
+    width: 100%;
+    text-align: center;
+
+    &.close {
+      width: 40px;
+      @include positioning(absolute, 0, 0, 'null', 'null');
+    }
+
+    a {
+      padding: 5px;
+
+      display: block;
+    }
+  }
+
+  &.active {
+    opacity: 0.95;
+    @include positioning(absolute, 0px, 'null', 'null', 0px);
+    z-index:5;
+
+    transition: all ease-in 0.4s;
+  }
+}
