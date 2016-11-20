@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="MainController as main                                                    ">
   <div>
     <img ng-src="{{ challengesShow.challenge.image }}">
       <p>{{ challengesShow.challenge.startDate }} - {{ challengesShow.challenge.finishDate }}</p>
@@ -10,7 +10,11 @@
       {{ challengesShow.authUser }}
       {{ challengesShow.challenge.participants}}
       {{ challengesShow.challenge.participants.userId.includes(challengesShow.authUser) }}
-      <button ng-click="challengesShow.participate()" ng-if="!challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Challenge this Event</button>
-      <!-- <textarea placeholder='Comments'>{{ challengesShow.challenge.projectCreator }}</textarea> -->
+      <button ng-click="challengesShow.participate()"  ng-if="!challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Challenge this Event</button>
+      <textarea placeholder='Comments'>{{ challengesShow.challenge.projectCreator }}</textarea>
+
+      <div class='challengePopUp' ng-click="togglePopUp">
+        You've clicked the link!!
+      </div>
   </div>
 </div>

@@ -9,6 +9,7 @@ function ChallengesIndexController(Challenge) {
   const challengesIndex = this;
 
   challengesIndex.all = Challenge.query();
+  console.log("In the challenge index controller");
 }
 
 
