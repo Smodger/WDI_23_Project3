@@ -7,14 +7,15 @@
       <p>Created by <a>{{ challengesShow.challenge.projectCreator }}</a></p>
       <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like }} </button>
       <!-- {{ challengesShow.participate }} -->
-      {{ challengesShow.authUser }}
+      <!-- {{ challengesShow.authUser }}
       {{ challengesShow.challenge.participants}}
-      {{ challengesShow.challenge.participants.userId.includes(challengesShow.authUser) }}
+      {{ challengesShow.challenge.participants.userId.includes(challengesShow.authUser) }} -->
       <button ng-click="challengesShow.participate()"  ng-if="!challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Challenge this Event</button>
-      <textarea placeholder='Comments'>{{ challengesShow.challenge.projectCreator }}</textarea>
+
+      <textarea placeholder='Comments'></textarea>
 
       <div class='challengePopUp' ng-click="togglePopUp">
-        You've clicked the link!!
+        <!-- You've clicked the link!! -->
       </div>
   </div>
 </div>

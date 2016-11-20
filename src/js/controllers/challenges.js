@@ -9,7 +9,7 @@ function ChallengesIndexController(Challenge) {
   const challengesIndex = this;
 
   challengesIndex.all = Challenge.query();
-  console.log("In the challenge index controller");
+  console.log('In the challenge index controller');
 }
 
 
@@ -56,9 +56,17 @@ function ChallengesShowController(Challenge, $state, $auth) {
     challengesShow.challenge.participants.userId.push(challengesShow.authUser);
     challengesShow.challenge.$update((data) => {
       console.log(data);
+      console.log(challengesShow.challenge.participants.userId);
     });
   }
 
+  function Unparticipate() {
+    const indexId = challengesShow.challenge.participants.userId.indexOf(challengesShow.authUser);
+    challengesShow.challenge.participants.userId.splice(indexId, 1);
+    console.log(challengesShow.challenge.participants.userId);
+  }
+
+  challengesShow.Unparticipate = Unparticipate;
   challengesShow.participate = participate;
   challengesShow.incrementLikes = challengeLike;
   challengesShow.isLoggedIn = $auth.isAuthenticated;

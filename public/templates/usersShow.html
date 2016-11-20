@@ -25,6 +25,8 @@
     <p>
       {{ usersShow.user.bio }}
     </p>
+    {{usersShow.user.activeChallenges[0]._id}}
+    <p>{{ usersShow.user.username }} has entered in <a ui-sref="challengesShow({ id: usersShow.user.activeChallenges[0]._id })" ui-sref-active="active">{{ usersShow.user.activeChallenges[0].name }}</a></p>
   </div>
 
   <div class="six columns">
