@@ -81,29 +81,6 @@ user2.save((err, user2) => {
     console.log('challenge1ID: ',challenge1ID);
     console.log('Created ', challenge1);
 
-    let challenge2ID;
-    const challenge2 = new Challenge({
-      name: 'The Long Way Round ',
-      startDate: '01/06/17',
-      finishDate: '01/12/17',
-      cost: '£2000',
-      location: { lat: 54, lng: 53 },
-      description: 'Motorbike around the world, the long way ',
-      image: 'image',
-      video: 'video',
-      like: 1,
-      projectCreator: 'Ewan McGregor',
-      comments: 'comment 1',
-      participants: []
-    });
-
-    challenge2.save((err, challenge2) => {
-      if(err) return console.log(err);
-      // console.log('running?');
-      challenge2ID = challenge2._id;
-      console.log('challenge2ID: ',challenge2ID);
-      console.log('Created ', challenge2);
-
 
     //Now update the user with the challenges they participate in...
     User.findByIdAndUpdate(user1ID, {
@@ -115,4 +92,28 @@ user2.save((err, user2) => {
       mongoose.connection.close();
     });
   });
+});
+
+let challenge2ID;
+const challenge2 = new Challenge({
+  name: 'The Long Way Round ',
+  startDate: '01/06/17',
+  finishDate: '01/12/17',
+  cost: '£2000',
+  location: { lat: 54, lng: 53 },
+  description: 'Motorbike around the world, the long way ',
+  image: 'image',
+  video: 'video',
+  like: 1,
+  projectCreator: 'Ewan McGregor',
+  comments: 'comment 1',
+  participants: []
+});
+
+challenge2.save((err, challenge2) => {
+  if(err) return console.log(err);
+  // console.log('running?');
+  challenge2ID = challenge2._id;
+  console.log('challenge2ID: ',challenge2ID);
+  console.log('Created ', challenge2);
 });
