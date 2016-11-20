@@ -7,8 +7,8 @@ angular.module('goApp')
 ChallengesIndexController.$inject = ['Challenge'];
 function ChallengesIndexController(Challenge) {
   const challengesIndex = this;
-
   challengesIndex.all = Challenge.query();
+  // console.log('In the challenge index controller');
 }
 
 
@@ -58,19 +58,33 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
       challengesShow.challenge.$update();
     }
   }
-  
+
   function participate() {
     // Add User Id to challenge model
     challengesShow.challenge.participants.data.push(challengesShow.authUser);
     challengesShow.challenge.participants.userId.push(challengesShow.authUser);
+
+    challengesShow.challenge.$update((data) => {
+      console.log(data);
+      console.log(challengesShow.challenge.participants.userId);
+    });
+
     // Add Challenge Id to user Model
     challengesShow.userProfile.activeChallenges.push(challengesShow.challenge._id);
 
     // Update both
     challengesShow.challenge.$update();
     challengesShow.userProfile.$update();
+
   }
 
+  function Unparticipate() {
+    const indexId = challengesShow.challenge.participants.userId.indexOf(challengesShow.authUser);
+    challengesShow.challenge.participants.userId.splice(indexId, 1);
+    console.log(challengesShow.challenge.participants.userId);
+  }
+
+  challengesShow.Unparticipate = Unparticipate;
   challengesShow.participate = participate;
   challengesShow.incrementLikes = challengeLike;
   challengesShow.isLoggedIn = $auth.isAuthenticated;
