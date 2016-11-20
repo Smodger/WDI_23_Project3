@@ -45,8 +45,13 @@ function UsersShowController(User, $state, $auth) {
   });
 
   function userLikes() {
+    const userIdIndex = usersShow.user.likes.indexOf(usersShow.authUser);
+
     if (!usersShow.user.likes.includes(usersShow.authUser) && !!usersShow.authUser) {
       usersShow.user.likes.push(usersShow.authUser);
+      usersShow.user.$update();
+    } else if (usersShow.user.likes.includes(usersShow.authUser) && !!usersShow.authUser) {
+      usersShow.user.likes.splice(userIdIndex, 1);
       usersShow.user.$update();
     }
   }

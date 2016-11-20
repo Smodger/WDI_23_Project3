@@ -9,7 +9,6 @@ function ChallengesIndexController(Challenge) {
   const challengesIndex = this;
 
   challengesIndex.all = Challenge.query();
-  console.log("In the challenge index controller");
 }
 
 
@@ -59,6 +58,7 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
       challengesShow.challenge.$update();
     }
   }
+  
   function participate() {
     // Add User Id to challenge model
     challengesShow.challenge.participants.data.push(challengesShow.authUser);
