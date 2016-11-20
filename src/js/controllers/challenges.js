@@ -7,9 +7,8 @@ angular.module('goApp')
 ChallengesIndexController.$inject = ['Challenge'];
 function ChallengesIndexController(Challenge) {
   const challengesIndex = this;
-
   challengesIndex.all = Challenge.query();
-  console.log('In the challenge index controller');
+  // console.log('In the challenge index controller');
 }
 
 
@@ -29,17 +28,19 @@ function ChallengesNewController(Challenge, $state) {
 }
 
 //SHOW
-ChallengesShowController.$inject = ['Challenge', '$state', '$auth'];
-function ChallengesShowController(Challenge, $state, $auth) {
+ChallengesShowController.$inject = ['Challenge', 'User', '$state', '$auth'];
+function ChallengesShowController(Challenge, User, $state, $auth) {
 
   const challengesShow = this;
   challengesShow.authUser = $auth.getPayload();
   if (challengesShow.authUser) {
     challengesShow.authUser = challengesShow.authUser._id;
+    User.get({id: challengesShow.authUser}, (data)=> {
+      challengesShow.userProfile = data;
+    });
   }
 
   challengesShow.challenge = Challenge.get($state.params);
-  console.log(challengesShow.challenge);
   function deleteChallenge() {
     challengesShow.challenge.$remove(() => {
       $state.go('challengesIndex');
@@ -47,17 +48,34 @@ function ChallengesShowController(Challenge, $state, $auth) {
   }
 
   function challengeLike() {
-    challengesShow.challenge.like ++;
-    challengesShow.challenge.$update();
+    const userIdIndex = challengesShow.challenge.like.indexOf(challengesShow.authUser);
+
+    if (!challengesShow.challenge.like.includes(challengesShow.authUser) && !!challengesShow.authUser) {
+      challengesShow.challenge.like.push(challengesShow.authUser);
+      challengesShow.challenge.$update();
+    } else if (challengesShow.challenge.like.includes(challengesShow.authUser) && !!challengesShow.authUser) {
+      challengesShow.challenge.like.splice(userIdIndex, 1);
+      challengesShow.challenge.$update();
+    }
   }
 
   function participate() {
+    // Add User Id to challenge model
     challengesShow.challenge.participants.data.push(challengesShow.authUser);
     challengesShow.challenge.participants.userId.push(challengesShow.authUser);
+
     challengesShow.challenge.$update((data) => {
       console.log(data);
       console.log(challengesShow.challenge.participants.userId);
     });
+
+    // Add Challenge Id to user Model
+    challengesShow.userProfile.activeChallenges.push(challengesShow.challenge._id);
+
+    // Update both
+    challengesShow.challenge.$update();
+    challengesShow.userProfile.$update();
+
   }
 
   function Unparticipate() {

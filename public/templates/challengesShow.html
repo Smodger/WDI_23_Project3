@@ -1,16 +1,16 @@
-<div ng-controller="MainController as main                                                    ">
   <div>
     <img ng-src="{{ challengesShow.challenge.image }}">
       <p>{{ challengesShow.challenge.startDate }} - {{ challengesShow.challenge.finishDate }}</p>
       <h2>{{ challengesShow.challenge.name }}</h2>
       <p>{{ challengesShow.challenge.description }}</p>
       <p>Created by <a>{{ challengesShow.challenge.projectCreator }}</a></p>
-      <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like }} </button>
-      <!-- {{ challengesShow.participate }} -->
-      <!-- {{ challengesShow.authUser }}
-      {{ challengesShow.challenge.participants}}
-      {{ challengesShow.challenge.participants.userId.includes(challengesShow.authUser) }} -->
-      <button ng-click="challengesShow.participate()"  ng-if="!challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Challenge this Event</button>
+
+      <!-- <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like }} </button> -->
+      <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like.length }} </button>
+
+      
+      <button ng-click="challengesShow.participate()"  ng-hide="challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Subscribe</button>
+      <button ng-click="challengesShow.Unparticipate()"  ng-hide="!challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Unsubscribe</button>
 
       <textarea placeholder='Comments'></textarea>
 
@@ -18,4 +18,3 @@
         <!-- You've clicked the link!! -->
       </div>
   </div>
-</div>
