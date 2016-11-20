@@ -10,10 +10,7 @@
       <!-- {{ challengesShow.authUser }}
       {{ challengesShow.challenge.participants}}
       {{ challengesShow.challenge.participants.userId.includes(challengesShow.authUser) }} -->
-      <button
-      ng-click="challengesShow.participate()" ng-hide="challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Challenge this Event</button>
-
-      <button ng-click="challengesShow.Unparticipate()" ng-hide="!challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Unsubscribe</button>
+      <button ng-click="challengesShow.participate()"  ng-if="!challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Challenge this Event</button>
 
       <textarea placeholder='Comments'></textarea>
 
