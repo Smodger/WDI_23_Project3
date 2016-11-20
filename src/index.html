@@ -16,7 +16,6 @@
     <div class="overlay" ng-controller="MainController as main">
       <div class="container">
         <header>
-          <h1 ui-sref="home" ui-sref-active="active">Go.</h1>
           <nav class="row">
             <ul class="columns six">
               <li>
@@ -36,7 +35,7 @@
 
             <div class="account-wrapper" ng-click="main.toggleMenu()" ng-class="{ active: main.menuActive }" ng-hide="!profile.isLoggedIn()">
 
-              <!-- {{ profile.currentUser.account }} -->
+              {{ profile.currentUser.username }}
 
               <img ng-src="{{ profile.currentUser.account.profilePhoto }}"/>
               <ul class="menu">
@@ -51,6 +50,8 @@
             </div>
 
           </nav>
+          <h1 ui-sref="home" ui-sref-active="active">Go.</h1>
+
         </header>
         <div class="content" ui-view>
         </div>
