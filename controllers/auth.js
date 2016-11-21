@@ -5,9 +5,11 @@ const mailer = require('../lib/mail');
 
 function register(req, res){
   User.create(req.body, (err, user) => {
+    console.log(err);
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
 
     mailer.sendMail(user, (err) => {
+      console.log(err);
       if (err) return res.status(500).json({ message: 'Something went wrong.' });
 
       const payload = { _id: user._id, username: user.username };
@@ -38,6 +40,7 @@ function confirm(req, res) {
 
 function login(req, res){
   User.findOne({ email: req.body.email, locked: false }, (err, user) => {
+    console.log(err);
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     if (!user || !user.validatePassword(req.body.password)) {
       return res.status(401).json({ message: 'Unauthorized.' });

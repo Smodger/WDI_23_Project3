@@ -102,7 +102,8 @@ const user1 = new User({
   coverPhoto: 'https://s-media-cache-ak0.pinimg.com/236x/5a/d5/52/5ad552b18314423d718aac9b43c2f556.jpg',
   profilePhoto: 'http://image1.redbull.com/rbcom/010/2016-04-26/1331791190164_2/0010/1/1500/1000/2/dynos-are-the-coolest-moves-in-climbing.jpg',
   // activeChallenges: [], //Challenge
-  like: [] //User
+  like: [], //User
+  locked: false
 });
 
 user1.save((err, user1) => {
@@ -125,7 +126,8 @@ const user2 = new User({
   coverPhoto: 'https://upload.wikimedia.org/wikipedia/commons/a/af/Female_kayaker_paddles.jpg',
   profilePhoto: 'http://www.nwrafting.com/wp-content/uploads/2012/01/JR.jpg',
   // activeChallenges: [],
-  like: []
+  like: [], //User
+  locked: false
 });
 
 user2.save((err, user2) => {
