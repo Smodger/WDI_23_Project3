@@ -1,12 +1,15 @@
 const mongoose  = require('mongoose');
 const bcrypt    = require('bcrypt');
+const uuid = require('uuid');
+
 const userImages = require('./user_images');
 const userFeedback = require('./user_images');
 
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
-  // locked: { type: Boolean, default: true }, // Lock the User by Default
+  locked: { type: Boolean, default: true }, // Lock the User by Default
+  confirmationCode: { type: String, default: uuid.v1 },
   activeChallenges: [{ type: String }],
   images: [userImages.schema],
   feedback: [userFeedback.schema]
@@ -70,6 +73,7 @@ userSchema.pre('save', preSave);
 userSchema.set('toJSON', {
   transform: function(doc, json) {
     delete json.passwordHash;
+    delete json.confirmationCode;
     delete json.__v;
     return json;
   }

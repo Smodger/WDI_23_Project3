@@ -4,8 +4,9 @@ const users = require('../controllers/users');
 const challenges = require('../controllers/challenges');
 
 router
-  .post('/login', authController.login)
-  .post('/register', authController.register);
+  .post('/register', authController.register)
+  .post('/confirm/:confirmationCode', authController.confirm)
+  .post('/login', authController.login);
 
 router.route('/users')
   .get(users.index)

@@ -1,5 +1,6 @@
 angular.module('goApp')
   .controller('RegisterController', RegisterController)
+  .controller('ConfirmController', ConfirmController)
   .controller('LoginController', LoginController);
 
 RegisterController.$inject = ['$auth', '$state'];
@@ -16,6 +17,16 @@ function RegisterController($auth, $state) {
   }
 
   register.submit = submit;
+}
+
+ConfirmController.$inject = ['$http', '$state'];
+function ConfirmController($http, $state) {
+  $http({
+    method: 'POST',
+    url: `/confirm/${$state.params.confirmationCode}`
+  }).then(() => {
+    $state.go('login');
+  });
 }
 
 LoginController.$inject = ['$auth', '$state'];

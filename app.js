@@ -8,7 +8,6 @@ const port = process.env.PORT || 8000;
 const router = require('./config/routes');
 const db = require('./config/db');
 
-// const mailer = require('./lib/mail');
 
 mongoose.connect(db.uri);
 
