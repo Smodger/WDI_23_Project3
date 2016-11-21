@@ -75,9 +75,11 @@ function UsersShowController(User, $state, $auth) {
 }
 
 //EDIT
-UsersEditController.$inject = ['User', '$state', '$auth'];
-function UsersEditController(User, $state, $auth) {
+UsersEditController.$inject = ['User', '$state', '$auth', 'user'];
+function UsersEditController(User, $state, $auth, user) {
   const usersEdit = this;
+
+  console.log(user);
 
   usersEdit.authUser = $auth.getPayload();
   if (usersEdit.authUser) {
@@ -93,8 +95,10 @@ function UsersEditController(User, $state, $auth) {
 
   function update() {
     usersEdit.user.$update((data) => {
+      console.log("DATA HERE", data);
       console.log(data.bio);
       $state.go('usersShow', { id: usersEdit.authUser });
+      user.account = data;
     });
   }
 

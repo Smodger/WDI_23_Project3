@@ -17,7 +17,8 @@ function googleMap($window, Challenge) {
 
           const map = new $window.google.maps.Map(element[0], {
             center: scope.challenge.location,
-            zoom: 6
+            zoom: 6,
+            scrollwheel: false
           });
 
           new $window.google.maps.Marker({
