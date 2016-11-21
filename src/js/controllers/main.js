@@ -1,23 +1,30 @@
 angular.module('goApp')
   .controller('MainController', MainController);
 
-MainController.$inject = ['$auth', '$state'];
-function MainController($auth, $state) {
+MainController.$inject = ['$auth'];
+function MainController($auth) {
   const main = this;
 
   main.isLoggedIn = $auth.isAuthenticated;
-
   main.currentUser = $auth.getPayload();
 
-  function logout() {
-    $auth.logout()
-      .then(() => {
-        $state.go('home');
-      });
+  function toggleMenu() {
+    console.log('in toggle menu');
+    main.menuActive = !main.menuActive;
+    console.log(main.menuActive);
   }
-  main.logout = logout;
+  main.toggleMenu = toggleMenu;
 
-  main.message = null;
+
+
+
+
+
+
+
+
+  // main.getProfile = getProfile;
+
   // const protectedStates = ['playersEdit', 'playersNew'];
   //
   // function secureState(e, toState) {

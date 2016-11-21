@@ -21,9 +21,25 @@ function challengesShow(req, res) {
   challenge.findById(req.params.id, (err, challenge) => {
     if (err) return res.status(500).json({error: err});
     if (!challenge) return res.status(404).json({error: 'NOT FOUND!'});
-    return res.json(challenge);
-  });
+    // return res.json(challenge);
+  })
+  .populate('participants.data')
+    .exec(function(err, challenge) {
+      if(err) {
+        console.log(err);
+        return res.json(err);
+      }
+      // challenge[0].participantsList = [];
+      // for(const item in challenge.participants) {
+      //   challenge[0].participantsList.push(item._id);
+      // }
+      // console.log(challenge[0], challenge[0].participantsList);
+    }).then((challenge) => {
+      console.log(challenge);
+      return res.json(challenge);
+    });
 }
+
 
 //UPDATE
 function challengesUpdate(req, res) {

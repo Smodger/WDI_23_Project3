@@ -33,10 +33,8 @@ function UsersShowController(User, $state, $auth) {
 
   User.get($state.params, (data) => {
     usersShow.user = data;
-    data.totalLikes = usersShow.user.likes.length;
 
     usersShow.authUser = $auth.getPayload();
-
     if (usersShow.authUser) {
       usersShow.authUser = usersShow.authUser._id;
     }
@@ -47,15 +45,26 @@ function UsersShowController(User, $state, $auth) {
   });
 
   function userLikes() {
+    const userIdIndex = usersShow.user.likes.indexOf(usersShow.authUser);
+
     if (!usersShow.user.likes.includes(usersShow.authUser) && !!usersShow.authUser) {
       usersShow.user.likes.push(usersShow.authUser);
-      // usersShow.user.$update();
-      console.log(usersShow.user);
-      usersShow.user.$update((data) => {
-        console.log(data);
-      });
+      usersShow.user.$update();
+    } else if (usersShow.user.likes.includes(usersShow.authUser) && !!usersShow.authUser) {
+      usersShow.user.likes.splice(userIdIndex, 1);
+      usersShow.user.$update();
     }
   }
+
+  // function userChallenges () {
+  //   usersShow.users.activeChallenges.data.push(usersShow.authUser);
+  //   usersShow.users.activeChallenges.userId.push(usersShow.authUser);
+  //   usersShow.users.$update((data) => {
+  //     console.log(data);
+  //   });
+  // }
+  //
+  // usersShow.userChallenges = userChallenges;
 
   // usersShow.user = User.get($state.params);
   function deleteUser() {
@@ -70,13 +79,22 @@ UsersEditController.$inject = ['User', '$state', '$auth'];
 function UsersEditController(User, $state, $auth) {
   const usersEdit = this;
 
-  usersEdit.user = User.get({ id: $auth.getPayload()._id });
+  usersEdit.authUser = $auth.getPayload();
+  if (usersEdit.authUser) {
+    usersEdit.authUser = usersEdit.authUser._id;
+  }
 
-  console.log(usersEdit.user);
+  User.get({ id: usersEdit.authUser }, (data) => {
+    usersEdit.user = data;
+
+    console.log(usersEdit.user);
+  });
+
 
   function update() {
-    usersEdit.user.$update(() => {
-      $state.go('usersShow', $state.params);
+    usersEdit.user.$update((data) => {
+      console.log(data.bio);
+      $state.go('usersShow', { id: usersEdit.authUser });
     });
   }
 

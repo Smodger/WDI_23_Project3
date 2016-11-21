@@ -10,7 +10,16 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   locked: { type: Boolean, default: true }, // Lock the User by Default
   confirmationCode: { type: String, default: uuid.v1 },
-  activeChallenges: [{ type: String }],
+  passwordHash: { type: String },
+  dob: { type: String },
+  gender: { type: String },
+  strapline: { type: String },
+  bio: { type: String },
+  coverPhoto: { type: String },
+  profilePhoto: { type: String },
+  video: { type: String },
+  likes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  activeChallenges: [{ type: mongoose.Schema.ObjectId, ref: 'Challenge' }],
   images: [userImages.schema],
   feedback: [userFeedback.schema]
 });
@@ -80,3 +89,6 @@ userSchema.set('toJSON', {
 });
 
 module.exports = mongoose.model('User', userSchema);
+
+
+// participants: ["582dc640f6e0254496198d34", "582ed371371260743000b7e0"]

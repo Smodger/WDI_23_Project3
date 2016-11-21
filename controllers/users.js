@@ -21,6 +21,15 @@ function usersShow(req, res) {
   User.findById(req.params.id, (err, user) => {
     if (err) return res.status(500).json({error: err});
     if (!user) return res.status(404).json({error: 'NOT FOUND!'});
+  })
+.populate('activeChallenges')
+  .exec(function(err) {
+    if(err) {
+      console.log(err);
+      return res.json(err);
+    }
+  }).then((user) => {
+    console.log(user);
     return res.json(user);
   });
 }

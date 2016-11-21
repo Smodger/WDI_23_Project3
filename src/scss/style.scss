@@ -1,10 +1,10 @@
 @import 'variables';
-@import 'partials';
 @import 'mixins';
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 
   color: $c_primary;
   font-family: $f_primary;

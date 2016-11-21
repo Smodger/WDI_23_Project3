@@ -9,7 +9,7 @@
         <a ui-sref="usersShow({ id: user._id })">
           <img ng-src="{{ user.profilePhoto || 'http://image.shutterstock.com/z/stock-vector-man-silhouette-profile-picture-vector-151265393.jpg' }}" alt="" />
           <div class="overlay">
-            Likes: {{ user.likes.length }}
+            "Likes: {{ user.likes.length }}"
           </div>
         </a>
       </div>
@@ -18,9 +18,7 @@
       <a ui-sref="usersShow({ id: user._id })">
         View Profile
       </a>
-      <div class="activeChallenge">
-        {{ user.activeChallenges }}
-      </div>
+
     </li>
   </ul>
 </div>

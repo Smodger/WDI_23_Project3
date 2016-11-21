@@ -1,29 +1,58 @@
 // LANDING BACKGROUND
+
 .holder {
-  height:100vh;
+  height:50vh;
+  min-height: 400px;
   width: 100vw;
 
   overflow: hidden;
   @include basicAbsolute(0,0);
+  z-index: 1;
 
   img.hero {
     width: 100%;
 
     margin: 0;
     padding: 0;
+
+    @include positioning(absolute, 0, 'null', 'null', 0);
+
+    opacity: 0;
+
+    &.i1 {
+      @include animationSetting(heroImage, 20s, infinite);
+      z-index: 1;
+    }
+    &.i2 {
+      @include animationSetting(heroImage, 20s, infinite);
+      animation-delay: 4s;
+      z-index: 2;
+    }
+    &.i3 {
+      @include animationSetting(heroImage, 20s, infinite);
+      animation-delay: 8s;
+      z-index: 3;
+    }
+    &.i4 {
+      @include animationSetting(heroImage, 20s, infinite);
+      animation-delay: 12s;
+      z-index: 4;
+    }
   }
 }
 
 .overlay {
   width: 100%;
 
-    @include basicAbsolute(0,0);
+  @include basicAbsolute(0,0);
+  z-index: 100;
 }
 
 // User index list
 
 ul.gridList {
   list-style: none;
+
   li {
     width:32%;
 
@@ -45,10 +74,11 @@ ul.gridList {
     overflow: hidden;
 
     border-radius: 50%;
+
     img {
       width:100%;
 
-        @include basicAbsolute(0,0);
+      @include basicAbsolute(0,0);
     }
   }
 }

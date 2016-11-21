@@ -1,11 +1,23 @@
-<div>
   <div>
     <img ng-src="{{ challengesShow.challenge.image }}">
       <p>{{ challengesShow.challenge.startDate }} - {{ challengesShow.challenge.finishDate }}</p>
       <h2>{{ challengesShow.challenge.name }}</h2>
       <p>{{ challengesShow.challenge.description }}</p>
       <p>Created by <a>{{ challengesShow.challenge.projectCreator }}</a></p>
-      <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like }} </button>
-      <!-- <textarea placeholder='Comments'>{{ challengesShow.challenge.projectCreator }}</textarea> -->
+
+      <!-- <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like }} </button> -->
+
+      <div ng-show='challengesShow.popUpActive' class="mainPopUp">
+        IN POP UP
+      </div>
+
+      <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like.length }} </button>
+
+      <button ng-click="challengesShow.participate(); challengesShow.togglePopUp()"  ng-hide="challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Subscribe</button>
+
+      <button ng-click="challengesShow.Unparticipate()"  ng-hide="!challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Unsubscribe</button>
+
+      <textarea placeholder='Comments'></textarea>
+
+
   </div>
-</div>
