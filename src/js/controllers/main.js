@@ -15,12 +15,7 @@ function MainController($auth) {
   }
   main.toggleMenu = toggleMenu;
 
-  function togglePopUp() {
-    console.log('In toggle pop up');
-    main.popUpActive = !main.popUpActive;
-  }
 
-  main.togglePopUp = !main.togglePopUp;
 
 
 

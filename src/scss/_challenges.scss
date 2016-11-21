@@ -23,3 +23,33 @@
     display: block;
   }
 }
+
+  .mainPopUp {
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 500px;
+    z-index: 1;
+  }
+
+
+// .account-wrapper {
+//   img { border-radius: 50px;}
+//   li {
+//     background-color: red;
+//     width: 150px;
+//     list-style: none;
+//     margin: 0;
+//     text-align: center;
+//    }
+//   float: right;
+//   width: 100px;
+//   height: 100px;
+//   .menu { display: none; }
+//   &.active {
+//     .menu {
+//       display: inline-block;
+//       z-index:5;
+//      }
+//   }
+// }

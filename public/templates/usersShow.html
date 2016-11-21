@@ -25,10 +25,10 @@
     <p>
       {{ usersShow.user.bio }}
     </p>
-    {{ usersShow.user }}
-    <p>{{ usersShow.user.username }} has entered in {{ challengesShow.challenge }}</p>
-  </div>
 
+    <p>{{ usersShow.user.username }} has entered in <a ui-sref="challengesShow({ id:usersShow.user.activeChallenges[0]._id })">{{ usersShow.user.activeChallenges[0].name }}</a></p>
+  </div>
+<!-- {{ user.usersShow. }} -->
   <div class="six columns">
     <h2>User Photos</h2>
     <div class="row">

@@ -66,7 +66,7 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
 
     challengesShow.challenge.$update((data) => {
       console.log(data);
-      console.log(challengesShow.challenge.participants.userId);
+      // console.log(challengesShow.challenge.participants.userId);
     });
 
     // Add Challenge Id to user Model
@@ -84,6 +84,12 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
     console.log(challengesShow.challenge.participants.userId);
   }
 
+  function togglePopUp() {
+    console.log('In toggle pop up');
+    challengesShow.popUpActive = true;
+  }
+
+  challengesShow.togglePopUp = togglePopUp;
   challengesShow.Unparticipate = Unparticipate;
   challengesShow.participate = participate;
   challengesShow.incrementLikes = challengeLike;
