@@ -32,6 +32,13 @@
     z-index: 1;
   }
 
+.google-map {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  margin: 5px,0,5px,0;
+}
 
 // .account-wrapper {
 //   img { border-radius: 50px;}
