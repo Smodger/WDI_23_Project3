@@ -10,6 +10,7 @@
 //     place: true,
 //     templateUrl: 'templates/dragDrop.html',
 //     link($scope, element) {
+
 //
 //       reader.onload = () => {
 //

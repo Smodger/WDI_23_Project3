@@ -40,6 +40,7 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
     });
   }
 
+
   Challenge.get($state.params).$promise.then((challenge) => {
     challengesShow.challenge = challenge;
   });
@@ -64,8 +65,11 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
 
   function participate() {
     // Add User Id to challenge model
-    challengesShow.challenge.participants.data.push(challengesShow.authUser);
-    challengesShow.challenge.participants.userId.push(challengesShow.authUser);
+
+    console.log(challengesShow.challenge.participants);
+    challengesShow.challenge.participants.data.ids.push(challengesShow.authUser);
+
+    challengesShow.challenge.participants.userIds.push(challengesShow.authUser);
 
     challengesShow.challenge.$update((data) => {
       console.log(data);
@@ -82,16 +86,29 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
   }
 
   function Unparticipate() {
-    const indexId = challengesShow.challenge.participants.userId.indexOf(challengesShow.authUser);
-    challengesShow.challenge.participants.userId.splice(indexId, 1);
-    console.log(challengesShow.challenge.participants.userId);
+    const indexId = challengesShow.challenge.participants.userIds.indexOf(challengesShow.authUser);
+    challengesShow.challenge.participants.userIds.splice(indexId, 1);
+    const indexDataId = challengesShow.challenge.participants.data.ids.indexOf(challengesShow.authUser);
+    challengesShow.challenge.participants.data.ids.splice(indexDataId, 1);
+    challengesShow.challenge.$update();
   }
 
   function togglePopUp() {
     console.log('In toggle pop up');
-    challengesShow.popUpActive = true;
+    challengesShow.popUpActive = !challengesShow.popUpActive;
   }
 
+  challengesShow.challenge.comments = {};
+
+  function addComment(){
+    challengesShow.challenge.comments.push(challengesShow.comment);
+    challengesShow.challenge.$update((data) => {
+      challengesShow.comment = ''
+    });
+  }
+
+
+  challengesShow.addComment = addComment;
   challengesShow.togglePopUp = togglePopUp;
   challengesShow.Unparticipate = Unparticipate;
   challengesShow.participate = participate;

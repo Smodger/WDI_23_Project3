@@ -15,6 +15,10 @@ body {
   background-color: #000;
 }
 
+.container {
+  position: static !important;
+}
+
 a {
    &, &:link, &:hover, &:visited {
      color: $c_primary;

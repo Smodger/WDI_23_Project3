@@ -11,10 +11,13 @@ const challengeSchema = new mongoose.Schema({
   video: { type: String },
   like: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   projectCreator: { type: String },
-  comments: { type: String },
+  comments: [{ type: String }],
   participants: {
-    data: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
-    userId: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
+    data: {
+      ids: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+      donations: [{ type: Number }]
+    },
+    userIds: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
   }
 });
 
