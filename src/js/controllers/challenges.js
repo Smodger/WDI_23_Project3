@@ -98,8 +98,6 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
     challengesShow.popUpActive = !challengesShow.popUpActive;
   }
 
-  challengesShow.challenge.comments = {};
-
   function addComment(){
     challengesShow.challenge.comments.push(challengesShow.comment);
     challengesShow.challenge.$update((data) => {
