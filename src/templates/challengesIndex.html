@@ -1,7 +1,7 @@
 <div class="challenges" ng-controller="ChallengesIndexController as challenges">
   <ul>
     <li ng-repeat="challenge in challenges.all" ng-class="$first? 'currentChallenge' : 'futureChallenge' ">
-      <a ui-sref="challengesShow({id:challenge._id})">
+      <a ui-sref="challengesShow({id: challenge._id})">
         <img ng-src="{{ challenge.image }}">
         {{ challenge.name }}
       </a>

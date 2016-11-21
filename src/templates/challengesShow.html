@@ -1,5 +1,8 @@
   <div>
-    <img ng-src="{{ challengesShow.challenge.image }}">
+    <img ng-src="{{challengesShow.challenge.image}}">
+
+    The challenge: {{ challengesShow.challenge }}
+
       <p>{{ challengesShow.challenge.startDate }} - {{ challengesShow.challenge.finishDate }}</p>
       <h2>{{ challengesShow.challenge.name }}</h2>
       <p>{{ challengesShow.challenge.description }}</p>
@@ -16,11 +19,18 @@
         </div>
       </div>
 
+      <p>
+        Donate
+      </p>
+
       <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like.length }} </button>
 
-      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Subscribe</button>
+      <p>
+        This challenge currently has {{ challengesShow.challenge.participants.userIds.length }} challengers
+      </p>
+      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)">Subscribe</button>
 
-      <button ng-click="challengesShow.Unparticipate()"  ng-hide="!challengesShow.challenge.participants.userId.includes(challengesShow.authUser)">Unsubscribe</button>
+      <button ng-click="challengesShow.Unparticipate()"  ng-hide="!challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)">Unsubscribe</button>
 
       <!-- {{challengesShow.challenge.comments}} -->
 
