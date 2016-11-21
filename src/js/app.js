@@ -31,15 +31,19 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: '/templates/register.html',
       controller: 'RegisterController as register'
     })
-    .state('login', {
-      url: '/login',
-      templateUrl: '/templates/login.html',
-      controller: 'LoginController as login'
+    .state('registerInterim', {
+      url: '/registerInterim',
+      templateUrl: '/templates/registerInterim.html'
     })
     .state('confirm', {
       url: '/confirm/:confirmationCode',
       templateUrl: '/templates/confirm.html',
       controller: 'ConfirmController as confirm'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: '/templates/login.html',
+      controller: 'LoginController as login'
     })
     .state('home', {
       url: '/',
