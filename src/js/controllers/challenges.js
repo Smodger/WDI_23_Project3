@@ -86,9 +86,19 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
 
   function togglePopUp() {
     console.log('In toggle pop up');
-    challengesShow.popUpActive = true;
+    challengesShow.popUpActive = !challengesShow.popUpActive;
   }
 
+  challengesShow.challenge.comments = {};
+
+  function addComment(){
+    challengesShow.challenge.comments.push(challengesShow.comment);
+    challengesShow.challenge.$update((data) => {
+      challengesShow.comment = '';
+    });
+  }
+
+  challengesShow.addComment = addComment;
   challengesShow.togglePopUp = togglePopUp;
   challengesShow.Unparticipate = Unparticipate;
   challengesShow.participate = participate;
