@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
 });
 
 
-
 function setPassword(value){
   this._password = value;
 }

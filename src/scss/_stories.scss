@@ -1,0 +1,30 @@
+.storyIndex {
+  img {
+    float: left;
+    width: 33%;
+
+    margin: 0px 10px 0px 0px;
+  }
+  &:after {
+    content: ' ';
+    clear: both;
+    display: block;
+  }
+  hr {
+    clear: both;
+  }
+}
+
+.photoHolder {
+  &:after {
+    content: ' ';
+    clear: both;
+    display: block;
+  }
+  .gridPhotos {
+    width: 33%;
+    padding: 10px;
+
+    float: left;
+  }
+}

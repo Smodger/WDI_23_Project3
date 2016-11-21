@@ -5,7 +5,7 @@ const challengeSchema = new mongoose.Schema({
   startDate: { type: String },
   finishDate: { type: String },
   cost: { type: String, required: true },
-  location: { lat: Number, lng: Number },
+  location: { lat: Number, lng: Number, placeName: String },
   description: { type: String, required: true },
   image: { type: String },
   video: { type: String },

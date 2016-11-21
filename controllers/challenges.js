@@ -35,7 +35,6 @@ function challengesShow(req, res) {
       // }
       // console.log(challenge[0], challenge[0].participantsList);
     }).then((challenge) => {
-      console.log(challenge);
       return res.json(challenge);
     });
 }

@@ -55,6 +55,21 @@ function Router($stateProvider, $urlRouterProvider) {
       url: '/challengers/:id',
       templateUrl: '/templates/usersShow.html',
       controller: 'UsersShowController as usersShow'
+    })
+    .state('storiesIndex', {
+      url: '/stories',
+      templateUrl: '/templates/storyIndex.html',
+      controller: 'StoriesIndexController as storiesIndex'
+    })
+    .state('storysEdit', {
+      url: '/stories/:id/edit',
+      templateUrl: '/templates/storyEdit.html',
+      controller: 'StoriesEditController as storiesEdit'
+    })
+    .state('storiesShow', {
+      url: '/stories/:id',
+      templateUrl: '/templates/storyShow.html',
+      controller: 'StoriesShowController as storiesShow'
     });
 
   $urlRouterProvider.otherwise('/challenges');

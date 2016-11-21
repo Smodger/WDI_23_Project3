@@ -2,6 +2,7 @@ const router = require('express').Router();
 const authController = require('../controllers/auth');
 const users = require('../controllers/users');
 const challenges = require('../controllers/challenges');
+const stories = require('../controllers/stories');
 
 router
   .post('/login', authController.login)
@@ -25,5 +26,15 @@ router.route('/challenges/:id')
   .put(challenges.update)
   .patch(challenges.update)
   .delete(challenges.delete);
+
+router.route('/stories')
+  .get(stories.index)
+  .post(stories.create);
+
+router.route('/stories/:id')
+  .get(stories.show)
+  .put(stories.update)
+  .patch(stories.update)
+  .delete(stories.delete);
 
 module.exports = router;
