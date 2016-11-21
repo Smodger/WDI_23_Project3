@@ -1,0 +1,11 @@
+
+<h1>Stories</h1>
+
+<div ng-repeat="story in storiesIndex.all" class="storyIndex">
+  <a ui-sref="storiesShow({ id: story._id })">
+    <img ng-src="{{ story.entries[0].photos[0].url }}" />
+    <p>{{ story.userId.username }}'s journey to {{ story.characterId.location.placeName }}</p>
+    <p>Last update: {{ story.entries[0].title }}, posted on: {{ story.entries[0].dateAdded }}</p>
+  </a>
+  <hr>
+</div>

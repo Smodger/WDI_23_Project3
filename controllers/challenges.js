@@ -43,6 +43,7 @@ function challengesShow(req, res) {
     console.log('dont cha wish this worked?');
     return res.json(challenge);
   });
+
 }
 
 

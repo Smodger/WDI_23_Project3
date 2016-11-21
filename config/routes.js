@@ -2,10 +2,12 @@ const router = require('express').Router();
 const authController = require('../controllers/auth');
 const users = require('../controllers/users');
 const challenges = require('../controllers/challenges');
+const stories = require('../controllers/stories');
 
 router
-  .post('/login', authController.login)
-  .post('/register', authController.register);
+  .post('/register', authController.register)
+  .post('/confirm/:confirmationCode', authController.confirm)
+  .post('/login', authController.login);
 
 router.route('/users')
   .get(users.index)
@@ -25,5 +27,15 @@ router.route('/challenges/:id')
   .put(challenges.update)
   .patch(challenges.update)
   .delete(challenges.delete);
+
+router.route('/stories')
+  .get(stories.index)
+  .post(stories.create);
+
+router.route('/stories/:id')
+  .get(stories.show)
+  .put(stories.update)
+  .patch(stories.update)
+  .delete(stories.delete);
 
 module.exports = router;
