@@ -15,3 +15,13 @@ $c_secondary: rgba(0,0,0,1);
   list-style: none;
   margin: 0px;
 }
+
+
+// Animations
+
+@keyframes heroImage {
+    0%    { opacity: 0; transition: all 50ms }
+    5%   { opacity: 1; transition: all 50ms }
+    25%   { opacity: 1; transition: all 50ms }
+    30%  { opacity: 0; transition: all 50ms }
+}

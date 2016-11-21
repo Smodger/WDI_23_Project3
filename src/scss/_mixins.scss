@@ -19,3 +19,9 @@
       left: $left;
     }
 }
+
+@mixin animationSetting($name, $duration, $iteration) {
+  animation-name: heroImage;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+}
