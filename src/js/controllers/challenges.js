@@ -40,7 +40,10 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
     });
   }
 
-  challengesShow.challenge = Challenge.get($state.params);
+  Challenge.get($state.params).$promise.then((challenge) => {
+    challengesShow.challenge = challenge;
+  });
+
   function deleteChallenge() {
     challengesShow.challenge.$remove(() => {
       $state.go('challengesIndex');
