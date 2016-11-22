@@ -1,12 +1,15 @@
 <form novalidate ng-submit="login.submit()">
   <div class="row">
-    <label>Email</label>
-    <input class="u-full-width" type="email" placeholder="Email" ng-model="login.credentials.email">
+    <div class="six columns offset-by-three">
+      <label>Email</label>
+      <input class="" type="email" placeholder="Email" ng-model="login.credentials.email">
+    </div>
   </div>
   <div class="row">
-    <label>Password</label>
-    <input class="u-full-width" type="password" placeholder="Password" ng-model="login.credentials.password">
+    <div class="six columns offset-by-three">
+      <label>Password</label>
+      <input class="" type="password" placeholder="Password" ng-model="login.credentials.password">
+    </div>
   </div>
-
   <button>Login</button>
 </form>

@@ -6,7 +6,7 @@
       <p>{{ challengesShow.challenge.startDate }} - {{ challengesShow.challenge.finishDate }}</p>
       <h2>{{ challengesShow.challenge.name }}</h2>
       <p>{{ challengesShow.challenge.description }}</p>
-      <p>Created by <a>{{ challengesShow.challenge.projectCreator }}</a></p>
+      <p>Created by <a ui-sref="usersShow({ id: challengesShow.challenge.participants[0]._id })">{{ challengesShow.challenge.participants[0].username }}</a></p>
 
       <google-map challenge="challengesShow.challenge"></google-map>
 
@@ -53,7 +53,11 @@
           <li>{{challenge}}</li>
         </ul>
       </div>
+<!-- 
+      {{ challengesShow.payload._id }}
+      {{ challengesShow.challenge.projectCreator }} -->
 
-      <button ui-sref="challengesEdit({ id: challengesShow.challenge._id })" ng-hide="!profile.isLoggedIn()">Edit Challenge</button>
-      <button ng-click="challengesShow.deleteChallenge()" ng-hide="!profile.isLoggedIn()">Delete Challenge</button>
+      <button ui-sref="challengesEdit({ id: challengesShow.challenge._id })" ng-if="challengesShow.challenge.projectCreator[0] == challengesShow.payload._id">Edit Challenge</button>
+
+      <button ng-click="challengesShow.deleteChallenge()" ng-if="challengesShow.challenge.projectCreator[0] == challengesShow.payload._id">Delete Challenge</button>
   </div>
