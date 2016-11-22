@@ -56,11 +56,11 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
 
     if (!challengesShow.challenge.like.includes(payload._id) && !!payload._id) {
       challengesShow.challenge.like.push(payload._id);
-      challengesShow.challenge.$update();
     } else if (challengesShow.challenge.like.includes(payload._id) && !!payload._id) {
       challengesShow.challenge.like.splice(userIdIndex, 1);
-      challengesShow.challenge.$update();
     }
+
+    challengesShow.challenge.$update();
   }
 
   function participate() {
@@ -71,9 +71,7 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
       challengesShow.challenge.participants.push(challengesShow.userProfile);
       console.log(challengesShow.challenge.participants);
 
-      challengesShow.challenge.$update(() => {
-        $state.reload();
-      });
+      challengesShow.challenge.$update();
     }
   }
 
@@ -82,9 +80,7 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
       return payload._id === participant._id;
     });
     challengesShow.challenge.participants.splice(indexId, 1);
-    challengesShow.challenge.$update(() => {
-      $state.reload();
-    });
+    challengesShow.challenge.$update();
   }
 
   function togglePopUp() {
