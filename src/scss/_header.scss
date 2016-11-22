@@ -54,7 +54,7 @@ ul.menu {
   @extend .reset-list;
   height: 100%;
   width: 100%;
-  padding: 50px;
+  padding: 25%;
 
   background-color: $c-secondary;
 
@@ -66,17 +66,24 @@ ul.menu {
     @extend .reset-list;
 
     width: 100%;
-    text-align: center;
-
-    &.close {
-      width: 40px;
-      @include positioning(absolute, 0, 0, 'null', 'null');
-    }
 
     a {
       padding: 5px;
 
       display: block;
+
+      font-size: 40px;
+      text-align: center;
+    }
+
+    &.close {
+      width: 40px;
+
+      margin: 40px 80px;
+      @include positioning(absolute, 0, 0, 'null', 'null');
+      a {
+        font-size: 80px;
+      }
     }
   }
 

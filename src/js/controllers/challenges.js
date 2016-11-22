@@ -12,17 +12,21 @@ function ChallengesIndexController(Challenge) {
 }
 
 
-ChallengesNewController.$inject = ['Challenge', '$state'];
-function ChallengesNewController(Challenge, $state) {
+ChallengesNewController.$inject = ['Challenge', '$state', '$auth'];
+function ChallengesNewController(Challenge, $state, $auth) {
   const challengesNew = this;
+  const payload = $auth.getPayload();
 
   challengesNew.challenge = {};
+  challengesNew.challenge.projectCreator = [payload._id];
 
   function create() {
     Challenge.save(challengesNew.challenge, () => {
       $state.go('challengesIndex');
     });
   }
+
+
 
   challengesNew.create = create;
 }
@@ -52,15 +56,18 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
   }
 
   function challengeLike() {
-    const userIdIndex = challengesShow.challenge.like.indexOf(payload._id);
 
-    if (!challengesShow.challenge.like.includes(payload._id) && !!payload._id) {
-      challengesShow.challenge.like.push(payload._id);
-    } else if (challengesShow.challenge.like.includes(payload._id) && !!payload._id) {
-      challengesShow.challenge.like.splice(userIdIndex, 1);
+    if(!payload){
+      $state.go('login');
+    } else {
+      const userIdIndex = challengesShow.challenge.like.indexOf(payload._id);
+      if (!challengesShow.challenge.like.includes(payload._id) && !!payload._id) {
+        challengesShow.challenge.like.push(payload._id);
+      } else if (challengesShow.challenge.like.includes(payload._id) && !!payload._id) {
+        challengesShow.challenge.like.splice(userIdIndex, 1);
+      }
+      challengesShow.challenge.$update();
     }
-
-    challengesShow.challenge.$update();
   }
 
   function participate() {
@@ -85,8 +92,12 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
 
   function togglePopUp() {
     // console.log('In toggle pop up');
+    if(payload) {
+      challengesShow.popUpActive = !challengesShow.popUpActive;
+    } else {
+      $state.go('login');
+    }
 
-    challengesShow.popUpActive = !challengesShow.popUpActive;
   }
 
   function addComment(){
@@ -97,13 +108,15 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
   }
 
   function isSubscribed() {
-    if(challengesShow.challenge) {
-      return challengesShow.challenge.participants.filter((participant) => {
-        return payload._id === participant._id;
-      }).length > 0;
+    if (payload) {
+      if(challengesShow.challenge) {
+        return challengesShow.challenge.participants.filter((participant) => {
+          return payload._id === participant._id;
+        }).length > 0;
+      }
     }
   }
-
+  challengesShow.payload = payload;
   challengesShow.isSubscribed = isSubscribed;
   challengesShow.addComment = addComment;
   challengesShow.togglePopUp = togglePopUp;

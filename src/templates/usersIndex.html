@@ -3,18 +3,18 @@
   <ul class="gridList row">
     <!-- ADD NG IF active challenges length > 0 -->
     <li ng-repeat="user in users.all" class="profile">
-      <div class="photo">
-        <a ui-sref="usersShow({ id: user._id })">
-          <img ng-src="{{ user.profilePhoto || 'http://image.shutterstock.com/z/stock-vector-man-silhouette-profile-picture-vector-151265393.jpg' }}" alt="" />
-          <div class="overlay">
-            "Likes: {{ user.likes.length }}"
-          </div>
-        </a>
-      </div>
-      <h3>{{ user.username }}</h3>
-      <p>Age: {{ user.dob }} {{ user.gender }}<br> {{ user.strapline }}</p>
       <a ui-sref="usersShow({ id: user._id })">
-        View Profile
+        <div class="photo">
+          <a ui-sref="usersShow({ id: user._id })">
+            <img ng-src="{{ user.profilePhoto || 'http://image.shutterstock.com/z/stock-vector-man-silhouette-profile-picture-vector-151265393.jpg' }}" alt="" />
+            <div class="overlay">
+              <h3>{{ user.likes.length }} Likes</h3>
+              <p>View profile</p>
+            </div>
+          </a>
+        </div>
+        <h3>{{ user.username }}</h3>
+        <p>Age: {{ user.dob }} {{ user.gender }}<br> {{ user.strapline }}</p>
       </a>
     </li>
   </ul>
