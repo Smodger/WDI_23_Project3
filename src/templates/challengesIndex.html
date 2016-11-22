@@ -1,5 +1,5 @@
 <div class="challenges" ng-controller="ChallengesIndexController as challenges">
-<button type="button" ui-sref="challengesNew"=>Add a challenge</button>
+<button type="button" ui-sref="challengesNew" ng-hide="!profile.isLoggedIn()">Add a challenge</button>
   <ul>
     <li ng-repeat="challenge in challenges.all" ng-class="$first? 'currentChallenge' : 'futureChallenge' ">
       <a ui-sref="challengesShow({id: challenge._id})">

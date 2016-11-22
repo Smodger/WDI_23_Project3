@@ -32,10 +32,10 @@ ChallengesShowController.$inject = ['Challenge', 'User', '$state', '$auth'];
 function ChallengesShowController(Challenge, User, $state, $auth) {
 
   const challengesShow = this;
-  challengesShow.authUser = $auth.getPayload();
-  if (challengesShow.authUser) {
-    challengesShow.authUser = challengesShow.authUser._id;
-    User.get({ id: challengesShow.authUser }, (data)=> {
+  const payload = $auth.getPayload();
+
+  if (payload) {
+    User.get({ id: payload._id }, (data)=> {
       challengesShow.userProfile = data;
     });
   }
@@ -52,47 +52,44 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
   }
 
   function challengeLike() {
-    const userIdIndex = challengesShow.challenge.like.indexOf(challengesShow.authUser);
+    const userIdIndex = challengesShow.challenge.like.indexOf(payload._id);
 
-    if (!challengesShow.challenge.like.includes(challengesShow.authUser) && !!challengesShow.authUser) {
-      challengesShow.challenge.like.push(challengesShow.authUser);
+    if (!challengesShow.challenge.like.includes(payload._id) && !!payload._id) {
+      challengesShow.challenge.like.push(payload._id);
       challengesShow.challenge.$update();
-    } else if (challengesShow.challenge.like.includes(challengesShow.authUser) && !!challengesShow.authUser) {
+    } else if (challengesShow.challenge.like.includes(payload._id) && !!payload._id) {
       challengesShow.challenge.like.splice(userIdIndex, 1);
       challengesShow.challenge.$update();
     }
   }
 
   function participate() {
-    // Add User Id to challenge model
+    const indexId = challengesShow.challenge.participants.findIndex((participant) => {
+      return payload._id === participant._id;
+    });
+    if(indexId === -1) {
+      challengesShow.challenge.participants.push(challengesShow.userProfile);
+      console.log(challengesShow.challenge.participants);
 
-    console.log(challengesShow.challenge.participants);
-    challengesShow.challenge.participants.push(challengesShow.authUser);
-
-    // challengesShow.challenge.$update((data) => {
-    //   console.log(data);
-    //   // console.log(challengesShow.challenge.participants.userId);
-    // });
-
-    // Add Challenge Id to user Model
-    challengesShow.userProfile.activeChallenges.push(challengesShow.challenge._id);
-
-    // Update both
-    challengesShow.challenge.$update();
-    challengesShow.userProfile.$update();
-
+      challengesShow.challenge.$update(() => {
+        $state.reload();
+      });
+    }
   }
 
   function Unparticipate() {
     const indexId = challengesShow.challenge.participants.findIndex((participant) => {
-      return challengesShow.authUser._id === participant._id;
+      return payload._id === participant._id;
     });
     challengesShow.challenge.participants.splice(indexId, 1);
-    challengesShow.challenge.$update();
+    challengesShow.challenge.$update(() => {
+      $state.reload();
+    });
   }
 
   function togglePopUp() {
-    console.log('In toggle pop up');
+    // console.log('In toggle pop up');
+
     challengesShow.popUpActive = !challengesShow.popUpActive;
   }
 
@@ -106,7 +103,7 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
   function isSubscribed() {
     if(challengesShow.challenge) {
       return challengesShow.challenge.participants.filter((participant) => {
-        return challengesShow.authUser._id === participant._id;
+        return payload._id === participant._id;
       }).length > 0;
     }
   }
