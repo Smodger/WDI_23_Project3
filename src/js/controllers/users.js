@@ -27,11 +27,11 @@ function UsersNewController(User, $state) {
 }
 
 //SHOW & DELETE
-UsersShowController.$inject = ['User', '$state', '$auth'];
-function UsersShowController(User, $state, $auth) {
+UsersShowController.$inject = ['User', '$state', '$auth', '$sce'];
+function UsersShowController(User, $state, $auth, $sce) {
   const usersShow = this;
 
-  User.get($state.params, (data) => {
+  User.get($state.params).$promise.then((data) => {
     usersShow.user = data;
 
     usersShow.authUser = $auth.getPayload();
@@ -39,10 +39,15 @@ function UsersShowController(User, $state, $auth) {
       usersShow.authUser = usersShow.authUser._id;
     }
 
+    console.log(usersShow.user);
+    usersShow.user.video = $sce.trustAsHtml(usersShow.user.video);
+
     usersShow.incrementLikes = userLikes;
     usersShow.isLoggedIn = $auth.isAuthenticated;
     usersShow.delete = deleteUser;
-  });
+  }
+
+  );
 
   function userLikes() {
     const userIdIndex = usersShow.user.likes.indexOf(usersShow.authUser);
