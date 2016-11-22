@@ -12,13 +12,7 @@ const challengeSchema = new mongoose.Schema({
   like: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   projectCreator: { type: String },
   comments: [{ type: String }],
-  participants: {
-    data: {
-      ids: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
-      donations: [{ type: Number }]
-    },
-    userIds: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
-  }
+  participants: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 });
 
 module.exports = mongoose.model('Challenge', challengeSchema);

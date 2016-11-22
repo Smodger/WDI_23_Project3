@@ -35,7 +35,7 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
   challengesShow.authUser = $auth.getPayload();
   if (challengesShow.authUser) {
     challengesShow.authUser = challengesShow.authUser._id;
-    User.get({id: challengesShow.authUser}, (data)=> {
+    User.get({ id: challengesShow.authUser }, (data)=> {
       challengesShow.userProfile = data;
     });
   }
@@ -67,14 +67,12 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
     // Add User Id to challenge model
 
     console.log(challengesShow.challenge.participants);
-    challengesShow.challenge.participants.data.ids.push(challengesShow.authUser);
+    challengesShow.challenge.participants.push(challengesShow.authUser);
 
-    challengesShow.challenge.participants.userIds.push(challengesShow.authUser);
-
-    challengesShow.challenge.$update((data) => {
-      console.log(data);
-      // console.log(challengesShow.challenge.participants.userId);
-    });
+    // challengesShow.challenge.$update((data) => {
+    //   console.log(data);
+    //   // console.log(challengesShow.challenge.participants.userId);
+    // });
 
     // Add Challenge Id to user Model
     challengesShow.userProfile.activeChallenges.push(challengesShow.challenge._id);
@@ -86,10 +84,10 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
   }
 
   function Unparticipate() {
-    const indexId = challengesShow.challenge.participants.userIds.indexOf(challengesShow.authUser);
-    challengesShow.challenge.participants.userIds.splice(indexId, 1);
-    const indexDataId = challengesShow.challenge.participants.data.ids.indexOf(challengesShow.authUser);
-    challengesShow.challenge.participants.data.ids.splice(indexDataId, 1);
+    const indexId = challengesShow.challenge.participants.findIndex((participant) => {
+      return challengesShow.authUser._id === participant._id;
+    });
+    challengesShow.challenge.participants.splice(indexId, 1);
     challengesShow.challenge.$update();
   }
 
@@ -105,7 +103,15 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
     });
   }
 
+  function isSubscribed() {
+    if(challengesShow.challenge) {
+      return challengesShow.challenge.participants.filter((participant) => {
+        return challengesShow.authUser._id === participant._id;
+      }).length > 0;
+    }
+  }
 
+  challengesShow.isSubscribed = isSubscribed;
   challengesShow.addComment = addComment;
   challengesShow.togglePopUp = togglePopUp;
   challengesShow.Unparticipate = Unparticipate;

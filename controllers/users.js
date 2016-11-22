@@ -18,20 +18,13 @@ function usersCreate(req, res) {
 
 //SHOW
 function usersShow(req, res) {
-  User.findById(req.params.id, (err, user) => {
-    if (err) return res.status(500).json({error: err});
-    if (!user) return res.status(404).json({error: 'NOT FOUND!'});
-  })
-  .populate('activeChallenges')
-    .exec(function(err) {
-      if(err) {
-        console.log(err);
-        return res.json(err);
-      }
-    })
-  .then((user) => {
-    return res.json(user);
-  });
+  User.findById(req.params.id)
+    .populate('activeChallenges')
+    .exec((err, user) => {
+      if (err) return res.status(500).json({error: err});
+      if (!user) return res.status(404).json({error: 'NOT FOUND!'});
+      return res.json(user);
+    });
 }
 
 //UPDATE

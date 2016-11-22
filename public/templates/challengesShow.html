@@ -28,11 +28,11 @@
       <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like.length }} </button>
 
       <p>
-        This challenge currently has {{ challengesShow.challenge.participants.userIds.length }} challengers
+        This challenge currently has {{ challengesShow.challenge.participants.length }} challengers
       </p>
-      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)">Subscribe</button>
+      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.isSubscribed()">Subscribe</button>
 
-      <button ng-click="challengesShow.Unparticipate()"  ng-hide="!challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)">Unsubscribe</button>
+      <button ng-click="challengesShow.Unparticipate()" ng-hide="!challengesShow.isSubscribed()">Unsubscribe</button>
 
       <!-- {{challengesShow.challenge.comments}} -->
 

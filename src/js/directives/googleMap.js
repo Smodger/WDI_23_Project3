@@ -1,7 +1,8 @@
 angular.module('goApp')
-  .directive('googleMap', googleMap);
+  .directive('googleMap', googleMap)
+  .directive('googleplace', googleplace);
 
-googleMap.$inject = ['$window', 'Challenge'];
+
 
 // let geocoder = new google.maps.Geocoder();
 // geocoder.geocode( { 'address': $scope.textfield }, function(results, status) {
@@ -10,7 +11,27 @@ googleMap.$inject = ['$window', 'Challenge'];
 //     $scope.myMap.panTo(location);
 //   }
 // });
+googleplace.$inject = ['$window'];
+function googleplace($window) {
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function(scope, element, attrs, model) {
+      const options = {
+        types: [],
+        componentRestrictions: {}
+      };
 
+      const autocomplete = new $window.google.maps.places.Autocomplete(element[0], options);
+
+      autocomplete.addListener('place_changed', (res, status) => {
+        model.$setViewValue(element.val());
+      });
+    }
+  };
+}
+
+googleMap.$inject = ['$window', 'Challenge'];
 function googleMap($window, Challenge) {
   return {
     restrict: 'E',
