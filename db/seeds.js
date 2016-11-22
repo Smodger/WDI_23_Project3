@@ -6,7 +6,7 @@ const Challenge = require('../models/challenge');
 const Promise = require('bluebird');
 mongoose.Promise = Promise;
 
-const db = require('./config/db');
+const db = require('../config/db');
 mongoose.connect(db.uri);
 
 User.collection.drop();
