@@ -25,20 +25,20 @@
         Donate
       </p>
 
-      <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like.length }} </button>
+      <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)" ng-hide="!profile.isLoggedIn()">Likes: {{ challengesShow.challenge.like.length }} </button>
 
       <p>
         This challenge currently has {{ challengesShow.challenge.participants.userIds.length }} challengers
       </p>
-      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)">Subscribe</button>
+      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)" ng-hide="!profile.isLoggedIn()">Subscribe</button>
 
-      <button ng-click="challengesShow.Unparticipate()"  ng-hide="!challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)">Unsubscribe</button>
+      <button ng-click="challengesShow.Unparticipate()"  ng-hide="!challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)" ng-hide="!profile.isLoggedIn()">Unsubscribe</button>
 
       <!-- {{challengesShow.challenge.comments}} -->
 
-      <form ng-submit="challengesShow.addComment()">
+      <form ng-submit="challengesShow.addComment()" ng-hide="!profile.isLoggedIn()">
         <textarea placeholder='Comments' ng-model="challengesShow.comment"></textarea>
-        <button>Submit Comment</button>
+        <button ng-hide="!profile.isLoggedIn()">Submit Comment</button>
       </form>
 
       <div class="commentList">
@@ -48,6 +48,6 @@
         </ul>
       </div>
 
-      <button ui-sref="challengesEdit({ id: challengesShow.challenge._id })">Edit Challenge</button>
-      <button ng-click="challengesShow.deleteChallenge()">Delete Challenge</button>
+      <button ui-sref="challengesEdit({ id: challengesShow.challenge._id })" ng-hide="!profile.isLoggedIn()">Edit Challenge</button>
+      <button ng-click="challengesShow.deleteChallenge()" ng-hide="!profile.isLoggedIn()">Delete Challenge</button>
   </div>
