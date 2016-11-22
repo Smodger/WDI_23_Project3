@@ -1,10 +1,15 @@
 <div class="challenges" ng-controller="ChallengesIndexController as challenges">
-<button type="button" ui-sref="challengesNew" ng-hide="!profile.isLoggedIn()">Add a challenge</button>
+<button type="button" ui-sref="challengesNew" ng-hide="!profile.isLoggedIn()" class="addChallenge">Add a challenge</button>
+
+
+
   <ul>
     <li ng-repeat="challenge in challenges.all" ng-class="$first? 'currentChallenge' : 'futureChallenge' ">
       <a ui-sref="challengesShow({id: challenge._id})">
+        <span ng-if="$first">{{ challenge.name }}</span>
+        <h1>Other Challenge</h1>
         <img ng-src="{{ challenge.image }}">
-        {{ challenge.name }}
+        <p ng-if="!$first">{{ challenge.name }}</p>
       </a>
     </li>
   </ul>

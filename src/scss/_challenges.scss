@@ -6,8 +6,9 @@
     display: block;
   }
   img {
-    width: 180px;
-    height: 180px;
+    width: 60%;
+    height: 60%;
+    border-radius: 5px;
   }
 }
 
@@ -18,6 +19,11 @@
 }
 
 .currentChallenge {
+  text-align: center;
+  img {
+    width: 100%;
+    border-radius: 5px;
+  }
   a {
     display: block;
   }
@@ -55,6 +61,26 @@
   width: 100px;
   height: 100px;
 }
+
+.addChallenge {
+  width: auto;
+  margin-left: 100%;
+  margin-bottom: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // .account-wrapper {
 //   img { border-radius: 50px;}
