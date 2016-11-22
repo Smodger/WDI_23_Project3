@@ -7,10 +7,28 @@ button {
 
 input, textarea, select {
   color: $c_secondary;
+  width: 350px;
+  display: block;
+  margin: auto;
+  margin-bottom: 30px;
+  color: black;
 }
+
+form {
+  margin: auto;
+}
+
+// form {
+//   margin: auto;
+// }
+//
+// .container {
+//   margin: auto;
+// }
 
 .usersEditForm {
   color: black;
+  margin: auto;
   textarea {
     color: black;
   }
