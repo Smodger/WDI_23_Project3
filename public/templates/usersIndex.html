@@ -1,7 +1,5 @@
 <div ng-controller="UsersIndexController as users">
-
   <h1>Active Challengers</h1>
-
   <ul class="gridList row">
     <!-- ADD NG IF active challenges length > 0 -->
     <li ng-repeat="user in users.all" class="profile">
@@ -18,7 +16,6 @@
       <a ui-sref="usersShow({ id: user._id })">
         View Profile
       </a>
-
     </li>
   </ul>
 </div>

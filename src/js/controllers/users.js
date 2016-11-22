@@ -88,7 +88,6 @@ function UsersEditController(User, $state, $auth, user) {
 
   User.get({ id: usersEdit.authUser }, (data) => {
     usersEdit.user = data;
-
     console.log(usersEdit.user);
   });
 

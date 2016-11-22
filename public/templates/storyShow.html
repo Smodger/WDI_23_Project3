@@ -11,6 +11,6 @@
       <img  ng-src="{{ photo.url }}" />
     </div>
   </div>
-  <a ui-sref="storiesEdit({ id: entry._id })">Edit this entry</a>
+  <a ui-sref="storiesEdit({ id: storiesShow.story._id, entryId: entry._id })">Edit this entry</a>
   <hr>
 </div>

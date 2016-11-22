@@ -81,7 +81,7 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'StoriesCreateEntryController as storiesCreateEntry'
     })
     .state('storiesEdit', {
-      url: '/stories/:id/edit',
+      url: '/stories/entries/:id/',
       templateUrl: '/templates/storyEdit.html',
       controller: 'StoriesEditController as storiesEdit'
     })

@@ -12,4 +12,4 @@ const storyEntries = new mongoose.Schema({
   order: { type: Number }
 });
 
-module.exports = mongoose.model('storyEntries', storyEntries);
+module.exports = mongoose.model('StoryEntries', storyEntries);
