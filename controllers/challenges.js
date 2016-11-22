@@ -18,31 +18,13 @@ function challengesCreate(req, res) {
 
 //SHOW
 function challengesShow(req, res) {
-  console.log('challenge clicked on: ', req.params.id);
-  challenge.findById(req.params.id, (err, challenge) => {
-    if (err) return res.status(500).json({error: err});
-    if (!challenge) return res.status(404).json({error: 'NOT FOUND!'});
-    // return res.json(challenge);
-  })
-  .populate('participants.data.ids')
-  .exec((err, challenge) => {
-    if(err) {
-      console.log(err);
-      // return res.json(err);
-      // return res.status(500).json({error: err});
-      return;
-    }
-    console.log('the challenge: ', challenge);
-      // challenge[0].participantsList = [];
-      // for(const item in challenge.participants) {
-      //   challenge[0].participantsList.push(item._id);
-      // }
-      // console.log(challenge[0], challenge[0].participantsList);
-  }).then((challenge) => {
-    console.log(challenge);
-    console.log('dont cha wish this worked?');
-    return res.json(challenge);
-  });
+  challenge.findById(req.params.id)
+    .populate('participants')
+    .exec((err, challenge) => {
+      if (err) return res.status(500).json({error: err});
+      if (!challenge) return res.status(404).json({error: 'NOT FOUND!'});
+      return res.json(challenge);
+    });
 
 }
 

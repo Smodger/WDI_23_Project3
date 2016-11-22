@@ -149,12 +149,7 @@ user2.save((err, user2) => {
     like: [],
     projectCreator: 'Chris',
     comments: 'Not for the feint hearted',
-    participants: {
-      data: {
-        ids: [user1ID],
-        donations: [5]
-      },
-      userIds: [user2ID] }
+    participants: [user1ID]
   });
 
   challenge1.save((err, challenge1) => {
@@ -177,12 +172,7 @@ user2.save((err, user2) => {
       like: [],
       projectCreator: 'Ewan McGregor',
       comments: 'comment 1',
-      participants: {
-        data: {
-          ids: [user2ID],
-          donations: [15]
-        },
-        userIds: [user2ID] }
+      participants: [user2ID]
     });
 
     challenge2.save((err, challenge2) => {
