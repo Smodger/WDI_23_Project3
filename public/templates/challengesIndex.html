@@ -7,7 +7,6 @@
     <li ng-repeat="challenge in challenges.all" ng-class="$first? 'currentChallenge' : 'futureChallenge' ">
       <a ui-sref="challengesShow({id: challenge._id})">
         <span ng-if="$first">{{ challenge.name }}</span>
-        <h1>Other Challenge</h1>
         <img ng-src="{{ challenge.image }}">
         <p ng-if="!$first">{{ challenge.name }}</p>
       </a>
