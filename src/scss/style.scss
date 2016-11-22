@@ -20,15 +20,23 @@ body {
 }
 
 a {
-   &, &:link, &:hover, &:visited {
+  color: $c_primary;
+   &, &:link, &:visited {
      color: $c_primary;
      text-decoration: none;
+
+     transition: all 1s;
+   }
+   &:hover {
+     color: $c_tertiary;
    }
 }
 
-img {
-  max-width: 100%;
+h1 {
+  text-align: center;
+  margin-bottom: 120px;
 }
+
 
 @import 'layout';
 @import 'header';
