@@ -1,8 +1,8 @@
 angular.module('goApp')
   .controller('MainController', MainController);
 
-MainController.$inject = ['$auth'];
-function MainController($auth) {
+MainController.$inject = ['$auth', '$rootScope', '$state'];
+function MainController($auth, $rootScope, $state) {
   const main = this;
 
   main.isLoggedIn = $auth.isAuthenticated;
@@ -15,27 +15,17 @@ function MainController($auth) {
   }
   main.toggleMenu = toggleMenu;
 
+  const protectedStates = ['challengesEdit', 'challengesNew'];
 
+  function secureState(e, toState) {
+    main.message = null;
+    if(!$auth.isAuthenticated() && protectedStates.includes(toState.name)) {
+      e.preventDefault();
+      $state.go('login');
+      main.message = 'You must be logged in to go there!';
+    }
+  }
 
-
-
-
-
-
-
-  // main.getProfile = getProfile;
-
-  // const protectedStates = ['playersEdit', 'playersNew'];
-  //
-  // function secureState(e, toState) {
-  //   main.message = null;
-  //   if(!$auth.isAuthenticated() && protectedStates.includes(toState.name)) {
-  //     e.preventDefault();
-  //     $state.go('login');
-  //     main.message = 'You must be logged in to go there!';
-  //   }
-  // }
-
-  // $rootScope.$on('$stateChangeStart', secureState);
+  $rootScope.$on('$stateChangeStart', secureState);
 
 }

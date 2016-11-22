@@ -72,7 +72,7 @@ user2.save((err, user2) => {
     image: 'http://lh6.ggpht.com/MYBmrR4UydPzD1fKuTuIgPir_kEfiYcFU3gSF24K59q4GX0sULvu4JrBY4aI1t1q75w9jNnRttDl7QkxKxPoBw',
     video: 'video',
     like: [],
-    projectCreator: 'Chris',
+    projectCreator: [user1ID],
     comments: 'Not for the feint hearted',
     participants: [user1ID]
   });
@@ -95,7 +95,7 @@ user2.save((err, user2) => {
       image: 'http://longwayround.com/images/banner_long-way-round.jpg',
       video: 'video',
       like: [],
-      projectCreator: 'Ewan McGregor',
+      projectCreator: [user2ID],
       comments: 'comment 1',
       participants: [user2ID]
     });
