@@ -30,9 +30,9 @@
       <p>
         This challenge currently has {{ challengesShow.challenge.participants.userIds.length }} challengers
       </p>
-      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)" ng-hide="!profile.isLoggedIn()">Subscribe</button>
+      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)">Subscribe</button>
 
-      <button ng-click="challengesShow.Unparticipate()"  ng-hide="!challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)" ng-hide="!profile.isLoggedIn()">Unsubscribe</button>
+      <button ng-click="challengesShow.Unparticipate()"  ng-hide="!challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)">Unsubscribe</button>
 
       <!-- {{challengesShow.challenge.comments}} -->
 
