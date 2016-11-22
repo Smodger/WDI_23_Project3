@@ -1,8 +1,8 @@
-const challenge = require('../models/challenge');
+const Challenge = require('../models/challenge');
 
 //INDEX
 function challengesIndex(req, res) {
-  challenge.find((err, challenges) => {
+  Challenge.find((err, challenges) => {
     if (err) return res.status(500).json({error: err});
     return res.json(challenges);
   });
@@ -10,7 +10,7 @@ function challengesIndex(req, res) {
 
 //CREATE
 function challengesCreate(req, res) {
-  challenge.create(req.body, (err, challenge) => {
+  Challenge.create(req.body, (err, challenge) => {
     if (err) return res.status(400).json({error: err});
     return res.json(challenge);
   });
@@ -18,7 +18,7 @@ function challengesCreate(req, res) {
 
 //SHOW
 function challengesShow(req, res) {
-  challenge.findById(req.params.id)
+  Challenge.findById(req.params.id)
     .populate('participants')
     .exec((err, challenge) => {
       if (err) return res.status(500).json({error: err});
@@ -31,16 +31,23 @@ function challengesShow(req, res) {
 
 //UPDATE
 function challengesUpdate(req, res) {
-  challenge.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, challenge) => {
+  Challenge.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, challenge) => {
     if (err) return res.status(500).json({error: err});
     if (!challenge) return res.status(404).json({error: 'NOT FOUND!'});
-    return res.status(200).json(challenge);
+
+    Challenge.findById(challenge._id)
+      .populate('participants')
+      .exec((err, challenge) => {
+        if (err) return res.status(500).json({error: err});
+        return res.status(200).json(challenge);
+      });
+
   });
 }
 
 //DELETE
 function challengesDelete(req, res) {
-  challenge.findByIdAndRemove(req.params.id, (err, challenge) => {
+  Challenge.findByIdAndRemove(req.params.id, (err, challenge) => {
     if (err) return res.status(500).json({error: err});
     if (!challenge) return res.status(404).json({error: 'NOT FOUND!'});
     return res.status(204).send();
