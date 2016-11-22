@@ -6,7 +6,7 @@ function ProfileController($auth, $state, User, user) {
   const profile = this;
 
   profile.isLoggedIn = $auth.isAuthenticated;
-
+  
   if ($auth.getPayload()){
     profile.currentUserId = $auth.getPayload()._id;
   }

@@ -14,26 +14,39 @@
     clear: left;
   }
 }
-//
-// .profile {
-//   .photo{
-//     margin: 150px 0px 0px 30px;
-//     img{
-//     }
-//   }
-// }
 
-// .photoStream {
-//   // background-color: blue;
-//   .photo {
-//     border: 1px solid black;
-//     display: inline-block;
-//     float: left;
-//     width: calc(33% - 12px);
-//     margin: 0 5px 5px 5px;
-//     overflow: hidden;
-//     img {
-//       display: block;
-//     }
-//   }
-// }
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+
+  .photo {
+    width: 70%;
+    margin: 0 auto 20px auto;
+    padding-bottom: 70%;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    img {
+      width:100%;
+
+      @include basicAbsolute(0,0);
+    }
+  }
+}
+
+.photoStream {
+  .photo {
+    border: 1px solid black;
+    display: inline-block;
+    float: left;
+    width: calc(33% - 12px);
+    margin: 0 5px 5px 5px;
+    overflow: hidden;
+    img {
+      display: block;
+    }
+  }
+}

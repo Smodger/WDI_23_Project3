@@ -60,25 +60,3 @@ ul.gridList {
     list-style: none;
   }
 }
-
-.profile {
-  text-align: center;
-  margin-bottom: 40px;
-
-  .photo {
-    width: 70%;
-    margin: 0 auto 20px auto;
-    padding-bottom: 70%;
-
-    position: relative;
-    overflow: hidden;
-
-    border-radius: 50%;
-
-    img {
-      width:100%;
-
-      @include basicAbsolute(0,0);
-    }
-  }
-}
