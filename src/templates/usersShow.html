@@ -1,24 +1,23 @@
 
-<div class="row profile-image">
-  <div class="three columns profile profileMain">
+<div class="row profileMain">
+  <div class="three columns profile">
     <div class="photo">
       <img ng-src="{{ usersShow.user.profilePhoto }}">
     </div>
+    <h3>{{ usersShow.user.username }}</h3>
+    <p>{{ usersShow.user.dob }} - {{ usersShow.user.gender }}</p>
     <button ng-click="usersShow.incrementLikes(user.user.likes)">Likes: {{ usersShow.user.likes.length }}</button>
   </div>
 
-  <div class="nine columns" ng-if="usersShow.user.video" ng-bind-html="usersShow.user.video">
+  <div class="nine columns videoHolder" ng-if="usersShow.user.video" ng-bind-html="usersShow.user.video">
     <!-- <iframe width="560" height="315" ng-src="{{ trustAsResourceUrl(usersShow.user.video) }}" frameborder="0" allowfullscreen></iframe> -->
 
   </div>
 
 </div>
+<hr>
 <div class="row">
-  <div class="three columns">
-    <h1>{{ usersShow.user.username }}</h1>
-    <p>{{ usersShow.user.dob }} - {{ usersShow.user.gender }}</p>
-  </div>
-  <div class="six columns"
+  <div class="eight columns"
     <h4>BIO</h4>
     <p>
       {{ usersShow.user.bio }}
@@ -27,7 +26,7 @@
     <p ng-show="usersShow.user.activeChallenges.length">{{ usersShow.user.username }} has entered in <a ui-sref="challengesShow({ id:usersShow.user.activeChallenges[0]._id })">{{ usersShow.user.activeChallenges[0].name }}</a></p>
   </div>
 <!-- {{ user.usersShow. }} -->
-  <div class="three columns">
+  <div class="four columns">
     <p>User Photos</p>
     <div class="row">
       <div class="six columns photo-stream" ng-repeat="photo in usersShow.user.images">
