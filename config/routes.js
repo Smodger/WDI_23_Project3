@@ -3,6 +3,7 @@ const authController = require('../controllers/auth');
 const users = require('../controllers/users');
 const challenges = require('../controllers/challenges');
 const stories = require('../controllers/stories');
+const secureRoute = require('../lib/secureRoute');
 
 router
   .post('/register', authController.register)
@@ -15,8 +16,8 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(users.show)
-  .put(users.update)
-  .delete(users.delete);
+  .put(secureRoute, users.update)
+  .delete(secureRoute, users.delete);
 
 router.route('/challenges')
   .get(challenges.index)
@@ -24,9 +25,9 @@ router.route('/challenges')
 
 router.route('/challenges/:id')
   .get(challenges.show)
-  .put(challenges.update)
-  .patch(challenges.update)
-  .delete(challenges.delete);
+  .put(secureRoute, challenges.update)
+  .patch(secureRoute, challenges.update)
+  .delete(secureRoute, challenges.delete);
 
 router.route('/stories')
   .get(stories.index)
@@ -35,7 +36,9 @@ router.route('/stories')
 router.route('/stories/:id')
   .get(stories.show)
   .put(stories.update)
-  .patch(stories.update)
-  .delete(stories.delete);
+  .patch(secureRoute, stories.update)
+  .delete(secureRoute, stories.delete);
+
+
 
 module.exports = router;
