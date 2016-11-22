@@ -91,13 +91,14 @@ function UsersEditController(User, $state, $auth, user) {
     usersEdit.authUser = usersEdit.authUser._id;
   }
 
-  User.get({ id: usersEdit.authUser }, (data) => {
+  User.get({ id: usersEdit.authUser }).$promise.then((data) => {
     usersEdit.user = data;
     console.log(usersEdit.user);
   });
 
 
   function update() {
+
     usersEdit.user.$update((data) => {
       $state.go('usersShow', { id: usersEdit.authUser });
       user.account = data;

@@ -119,7 +119,7 @@ function ChallengesEditController(Challenge, $state) {
   const challengesEdit = this;
 
   challengesEdit.challenge = Challenge.get($state.params);
-
+  
   function update() {
     challengesEdit.challenge.$update(() => {
       $state.go('challengesShow', $state.params);

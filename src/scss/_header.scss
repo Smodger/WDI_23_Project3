@@ -7,7 +7,7 @@ header {
     text-shadow: 0px 0px 8px $c_secondary;
   }
   nav {
-    background-color: transparentize($c_secondary, 0.5);
+    background-color: transparentize($c_secondary, 0.3);
     ul {
     @extend .reset-list;
       li {

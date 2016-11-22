@@ -12,7 +12,7 @@
 }
 
 body {
-  background-color: #000;
+	background-color: rgb(240,20,113);
 }
 
 .container {
@@ -35,6 +35,10 @@ a {
 h1 {
   text-align: center;
   margin-bottom: 120px;
+}
+
+p, a {
+  font-family: $f_secondary;
 }
 
 

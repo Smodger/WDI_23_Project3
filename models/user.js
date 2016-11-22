@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   video: { type: String },
   likes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   activeChallenges: [{ type: mongoose.Schema.ObjectId, ref: 'Challenge' }],
-  images: [userImages.schema],
+  images: [{ type: String , default: [null,null,null]}],
   feedback: [userFeedback.schema]
 });
 

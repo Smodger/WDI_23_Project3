@@ -45,6 +45,15 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="six columns">
+        <label for="images">Images</label>
+        <input type="text" class="u-full-width" name="image1" id="image1" ng-model="usersEdit.user.images[0]" placeholder="Image 1" />
+        <input type="text" class="u-full-width" name="image2" id="image2" ng-model="usersEdit.user.images[1]" placeholder="Image 2" />
+        <input type="text" class="u-full-width" name="image3" id="image3" ng-model="usersEdit.user.images[2]" placeholder="Image 3" />
+      </div>
+    </div>
+
     <drag-drop></drag-drop>
 
     <button>Submit</button>

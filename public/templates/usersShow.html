@@ -17,8 +17,8 @@
 </div>
 <hr>
 <div class="row">
-  <div class="eight columns"
-    <h4>BIO</h4>
+  <div class="eight columns">
+    <h3>BIO</h3>
     <p>
       {{ usersShow.user.bio }}
     </p>
@@ -30,7 +30,7 @@
     <p>User Photos</p>
     <div class="row">
       <div class="six columns photo-stream" ng-repeat="photo in usersShow.user.images">
-        <img ng-src="{{ photo.image }}">
+        <img ng-src="{{ photo }}">
       </div>
     </div>
   </div>
