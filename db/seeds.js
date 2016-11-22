@@ -6,7 +6,8 @@ const Challenge = require('../models/challenge');
 const Promise = require('bluebird');
 mongoose.Promise = Promise;
 
-mongoose.connect('mongodb://localhost/wdi23-project3');
+const db = require('./config/db');
+mongoose.connect(db.uri);
 
 User.collection.drop();
 Challenge.collection.drop();
