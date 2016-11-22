@@ -27,6 +27,7 @@ const user1 = new User({
   coverPhoto: 'https://s-media-cache-ak0.pinimg.com/236x/5a/d5/52/5ad552b18314423d718aac9b43c2f556.jpg',
   profilePhoto: 'http://image1.redbull.com/rbcom/010/2016-04-26/1331791190164_2/0010/1/1500/1000/2/dynos-are-the-coolest-moves-in-climbing.jpg',
   // activeChallenges: [], //Challenge
+  video: '<iframe width="560" height="315" src="https://www.youtube.com/embed/48lpr0K54DM" frameborder="0" allowfullscreen></iframe>',
   like: [], //User
   locked: false
 });
