@@ -3,6 +3,14 @@ angular.module('goApp')
 
 googleMap.$inject = ['$window', 'Challenge'];
 
+// let geocoder = new google.maps.Geocoder();
+// geocoder.geocode( { 'address': $scope.textfield }, function(results, status) {
+//   if(status === google.maps.GeocoderStatus.OK && results.length > 0) {
+//     let location = results[0].geometry.location;
+//     $scope.myMap.panTo(location);
+//   }
+// });
+
 function googleMap($window, Challenge) {
   return {
     restrict: 'E',
