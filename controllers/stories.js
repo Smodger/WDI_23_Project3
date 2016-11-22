@@ -2,19 +2,16 @@ const story = require('../models/story');
 
 //INDEX
 function storysIndex(req, res) {
-  story.find((err, stories) => {
+  story.find((err) => {
     if (err) return res.status(500).json({error: err});
-    return res.json(stories);
   })
   .populate('userId', 'username profilePhoto')
   .populate('challengeId', '_id name location')
-    .exec(function(err, story) {
-      if(err) return res.json(err);
-      console.log(story);
+    .exec(function(err) {
+      if(err) return res.status(500).json(err);
     })
   .then((story) => {
-    console.log(story);
-    return res.json(story);
+    return res.status(200).json(story);
   });
 }
 
@@ -22,7 +19,7 @@ function storysIndex(req, res) {
 function storysCreate(req, res) {
   story.create(req.body, (err, story) => {
     if (err) return res.status(400).json({error: err});
-    return res.json(story);
+    return res.status(200).json(story);
   });
 }
 
@@ -34,13 +31,11 @@ function storysShow(req, res) {
   })
   .populate('userId', 'username profilePhoto')
   .populate('challengeId', '_id name location')
-    .exec(function(err, story) {
-      if(err) return res.json(err);
-      console.log(story);
+    .exec(function(err) {
+      if(err) return res.status(500).json(err);
     })
   .then((story) => {
-    console.log(story);
-    return res.json(story);
+    return res.status(200).json(story);
   });
 }
 

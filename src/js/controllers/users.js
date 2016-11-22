@@ -95,8 +95,6 @@ function UsersEditController(User, $state, $auth, user) {
 
   function update() {
     usersEdit.user.$update((data) => {
-      console.log("DATA HERE", data);
-      console.log(data.bio);
       $state.go('usersShow', { id: usersEdit.authUser });
       user.account = data;
     });

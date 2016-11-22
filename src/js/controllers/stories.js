@@ -23,7 +23,7 @@ function StoriesCreateController(Story, $state, $auth, User) {
     storiesCreate.authUser = storiesCreate.authUser._id;
   }
 
-  User.get({id: storiesCreate.authUser }, (data) => {
+  User.get({ id: storiesCreate.authUser }, (data) => {
     storiesCreate.userInfo = data;
   });
 
@@ -32,8 +32,8 @@ function StoriesCreateController(Story, $state, $auth, User) {
   };
 
   function create() {
-    Story.save(storiesCreate.story, () => {
-      $state.go('storiesCreateEntry');
+    Story.save(storiesCreate.story, (data) => {
+      $state.go('storiesCreateEntry', {id: data._id});
     });
   }
   storiesCreate.create = create;
@@ -49,25 +49,19 @@ function StoriesCreateEntryController(Story, $state, $auth) {
     storiesCreateEntry.authUser = storiesCreateEntry.authUser._id;
   }
 
-  Story.get( $state.params , (data) => {
-    // console.log(data);
-    // if(!data) {
-    //   $state.go('storiesCreate');
-    // } else {
+  Story.get( $state.params, (data) => {
     storiesCreateEntry.story = data;
-    console.log(storiesCreateEntry.story);
-    // }
-  });
 
-  storiesCreateEntry.entry = [];
+
+    storiesCreateEntry.new = {
+      order: storiesCreateEntry.story.entries.length + 1
+    };
+  });
 
   function addEntry() {
     storiesCreateEntry.story.entries.push(storiesCreateEntry.new);
 
-    console.log(storiesCreateEntry.new);
-
-    storiesCreateEntry.story.$update((data) => {
-      console.log(data);
+    storiesCreateEntry.story.$update(() => {
       $state.go('storiesShow', $state.params );
     });
   }
@@ -100,24 +94,20 @@ function StoriesShowController(Story, $state, $auth) {
 }
 
 //EDIT
-StoriesEditController.$inject = ['Story', '$state', '$auth'];
-function StoriesEditController(Story, $state, $auth) {
+StoriesEditController.$inject = ['Story', '$state'];
+function StoriesEditController(Story, $state) {
   const storiesEdit = this;
+  console.log('I am working');
 
-  storiesEdit.authUser = $auth.getPayload();
-  if (storiesEdit.authUser) {
-    storiesEdit.authUser = storiesEdit.authUser._id;
-  }
-
-  Story.get({ id: storiesEdit.authUser }, (data) => {
-    storiesEdit.story = data;
+  Story.get($state.params, (data) => {
+    storiesEdit.entry = data;
   });
 
   function update() {
-    storiesEdit.story.$update((data) => {
-      console.log(data.bio);
-      $state.go('storiesShow', { id: storiesEdit.authUser });
-    });
+    console.log(storiesEdit.entry);
+    // storiesEdit.entry.$update((data) => {
+    //   $state.go('storiesShow', { id: storiesEdit.authUser });
+    // });
   }
 
   storiesEdit.update = update;

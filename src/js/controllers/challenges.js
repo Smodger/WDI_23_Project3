@@ -112,7 +112,7 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
   challengesShow.participate = participate;
   challengesShow.incrementLikes = challengeLike;
   challengesShow.isLoggedIn = $auth.isAuthenticated;
-  challengesShow.delete = deleteChallenge;
+  challengesShow.deleteChallenge = deleteChallenge;
 }
 
 ChallengesEditController.$inject = ['Challenge', '$state'];

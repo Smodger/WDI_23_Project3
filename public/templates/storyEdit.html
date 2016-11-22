@@ -1,0 +1,21 @@
+{{ storiesEdit.entry }}
+
+<form novalidate ng-submit="storiesEditEntry.edit()">
+  <div class="row">
+    <label>Entry Title</label>
+    <input class="u-full-width" type="text" placeholder="e.g. I fell" ng-model="storiesEdit.entry.title">
+  </div>
+  <div class="row">
+    <label>Short Intro</label>
+    <input class="u-full-width" type="text" placeholder="e.g. a cool strapline" ng-model="storiesEdit.entry.shortIntro">
+  </div>
+  <div class="row">
+    <label>Main Content</label>
+    <input class="u-full-width" type="text" placeholder="e.g. all my really cool adventures" ng-model="storiesEdit.entry.mainContent">
+  </div>
+  <div class="row">
+    <label>Order</label>
+    <input class="u-full-width" type="text" placeholder="e.g. 1" ng-model="storiesEdit.entry.order">
+  </div>
+  <button>Submit</button>
+</form>
