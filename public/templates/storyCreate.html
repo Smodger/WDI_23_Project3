@@ -1,1 +1,13 @@
 
+<form novalidate ng-submit="storiesCreate.create()">
+
+  {{ storiesCreate.story }}
+  <div class="row">
+    <label>Entry Title</label>
+    <select class="u-full-width" ng-model="storiesCreate.story.challengeId">
+      <option value="" disabled="" >Select a challange</option>
+      <option ng-repeat="option in storiesCreate.userInfo.activeChallenges" value="{{ option._id }}">{{ option.name }}</option>
+    </select>
+  </div>
+  <input type="submit" />
+</form>

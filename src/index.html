@@ -53,7 +53,8 @@
             </div>
             <ul class="menu" ng-class="{ active: main.menuActive }" ng-hide="!profile.isLoggedIn()">
               <li class="close"><a ng-click="main.toggleMenu()">X</a></li>
-              <li><a ui-sref="usersEdit({ id: profile.currentUser.account._id })"  ng-click="main.toggleMenu()" class="profileButton">Edit details</a></li>
+              <li><a ui-sref="usersEdit({ id: profile.currentUser.account._id })" ng-click="main.toggleMenu()" class="profileButton">Edit details</a></li>
+              <li><a ui-sref="storiesCreate({ id: profile.currentUser.account._id })" ng-click="main.toggleMenu()">Add Blog Entry</a></li>
               <li><a ng-click="profile.logout(); main.toggleMenu()" ng-hide="!profile.isLoggedIn()">Log out</a></li>
             </ul>
           </div>

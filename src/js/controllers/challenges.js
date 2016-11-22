@@ -100,8 +100,8 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
 
   function addComment(){
     challengesShow.challenge.comments.push(challengesShow.comment);
-    challengesShow.challenge.$update((data) => {
-      challengesShow.comment = ''
+    challengesShow.challenge.$update(() => {
+      challengesShow.comment = '';
     });
   }
 

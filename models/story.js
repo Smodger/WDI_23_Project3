@@ -1,7 +1,7 @@
 const mongoose  = require('mongoose');
 
 const storySchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  r: { type: mongoose.Schema.ObjectId, ref: 'User' },
   challengeId: { type: mongoose.Schema.ObjectId, ref: 'Challenge' },
   entries: [{
     title: { type: String },

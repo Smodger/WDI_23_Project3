@@ -1,6 +1,7 @@
 angular.module('goApp')
   .controller('StoriesIndexController', StoriesIndexController)
-  .controller('StoriesNewController', StoriesNewController)
+  .controller('StoriesCreateController', StoriesCreateController)
+  .controller('StoriesCreateEntryController', StoriesCreateEntryController)
   .controller('StoriesShowController', StoriesShowController)
   .controller('StoriesEditController', StoriesEditController);
 
@@ -13,17 +14,65 @@ function StoriesIndexController(Story) {
 }
 
 //CREATE
-StoriesNewController.$inject = ['Story', '$state'];
-function StoriesNewController(Story, $state) {
-  const storiesNew = this;
-  storiesNew.story = {};
+StoriesCreateController.$inject = ['Story', '$state', '$auth', 'User'];
+function StoriesCreateController(Story, $state, $auth, User) {
+  const storiesCreate = this;
+
+  storiesCreate.authUser = $auth.getPayload();
+  if (storiesCreate.authUser) {
+    storiesCreate.authUser = storiesCreate.authUser._id;
+  }
+
+  User.get({id: storiesCreate.authUser }, (data) => {
+    storiesCreate.userInfo = data;
+  });
+
+  storiesCreate.story = {
+    userId: storiesCreate.authUser
+  };
 
   function create() {
-    Story.save(storiesNew.story, () => {
-      $state.go('storyIndex');
+    Story.save(storiesCreate.story, () => {
+      $state.go('storiesCreateEntry');
     });
   }
-  storiesNew.create = create;
+  storiesCreate.create = create;
+}
+
+// Create entry
+StoriesCreateEntryController.$inject = ['Story', '$state', '$auth'];
+function StoriesCreateEntryController(Story, $state, $auth) {
+  const storiesCreateEntry = this;
+
+  storiesCreateEntry.authUser = $auth.getPayload();
+  if (storiesCreateEntry.authUser) {
+    storiesCreateEntry.authUser = storiesCreateEntry.authUser._id;
+  }
+
+  Story.get( $state.params , (data) => {
+    // console.log(data);
+    // if(!data) {
+    //   $state.go('storiesCreate');
+    // } else {
+    storiesCreateEntry.story = data;
+    console.log(storiesCreateEntry.story);
+    // }
+  });
+
+  storiesCreateEntry.entry = [];
+
+  function addEntry() {
+    storiesCreateEntry.story.entries.push(storiesCreateEntry.new);
+
+    console.log(storiesCreateEntry.new);
+
+    storiesCreateEntry.story.$update((data) => {
+      console.log(data);
+      $state.go('storiesShow', $state.params );
+    });
+  }
+
+  storiesCreateEntry.addEntry = addEntry;
 }
 
 //SHOW & DELETE
@@ -34,9 +83,9 @@ function StoriesShowController(Story, $state, $auth) {
   Story.get($state.params, (data) => {
     storiesShow.story = data;
 
-    storiesShow.authStory = $auth.getPayload();
-    if (storiesShow.authStory) {
-      storiesShow.authStory = storiesShow.authStory._id;
+    storiesShow.authUser = $auth.getPayload();
+    if (storiesShow.authUser) {
+      storiesShow.authUser = storiesShow.authUser._id;
     }
 
     storiesShow.isLoggedIn = $auth.isAuthenticated;

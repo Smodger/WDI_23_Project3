@@ -1,14 +1,11 @@
-textarea {
-  color: black;
-}
 
 button {
   width: 100%;
-  color: #fff !important;
+  color: $c_primary !important;
   font-size: 1em;
 }
 
-input {
+input, textarea, select {
   color: $c_secondary;
 }
 
