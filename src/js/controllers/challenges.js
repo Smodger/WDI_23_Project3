@@ -34,7 +34,8 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
   const challengesShow = this;
   challengesShow.authUser = $auth.getPayload();
   if (challengesShow.authUser) {
-    User.get({ id: challengesShow.authUser._id }, (data)=> {
+    challengesShow.authUser = challengesShow.authUser._id;
+    User.get({ id: challengesShow.authUser }, (data)=> {
       challengesShow.userProfile = data;
     });
   }
