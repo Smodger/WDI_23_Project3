@@ -1,7 +1,7 @@
   <div>
     <img ng-src="{{challengesShow.challenge.image}}">
 
-    The challenge: {{ challengesShow.challenge }}
+    <!-- The challenge: {{ challengesShow.challenge }} -->
 
       <p>{{ challengesShow.challenge.startDate }} - {{ challengesShow.challenge.finishDate }}</p>
       <h2>{{ challengesShow.challenge.name }}</h2>
@@ -12,6 +12,15 @@
 
       <!-- <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like }} </button> -->
 
+      <!-- {{ challengesShow.challenge.participants[0].profilePhoto }} -->
+
+      <h2>Active Participants</h2>
+
+      <img ng-repeat="participant in challengesShow.challenge.participants" class="profileImage" ng-src="{{participant.profilePhoto}}">
+
+
+
+
       <div ng-show='challengesShow.popUpActive' class="mainPopUp">
         <a ng-click="challengesShow.togglePopUp()">X</a>
         <div class="inner">
@@ -21,18 +30,15 @@
         </div>
       </div>
 
-      <p>
-        Donate
-      </p>
-
-      <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)" ng-hide="!profile.isLoggedIn()">Likes: {{ challengesShow.challenge.like.length }} </button>
+      <button ng-click="challengesShow.incrementLikes()">Likes: {{ challengesShow.challenge.like.length }} </button>
 
       <p>
-        This challenge currently has {{ challengesShow.challenge.participants.userIds.length }} challengers
+        This challenge currently has {{ challengesShow.challenge.participants.length }} challengers
       </p>
-      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)">Subscribe</button>
 
-      <button ng-click="challengesShow.Unparticipate()"  ng-hide="!challengesShow.challenge.participants.userIds.includes(challengesShow.authUser)">Unsubscribe</button>
+      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.isSubscribed()">Subscribe</button>
+
+      <button ng-click="challengesShow.Unparticipate()" ng-hide="!challengesShow.isSubscribed()">Unsubscribe</button>
 
       <!-- {{challengesShow.challenge.comments}} -->
 
