@@ -40,7 +40,7 @@ function UsersShowController(User, $state, $auth, $sce) {
     }
 
     console.log(usersShow.user);
-    usersShow.user.video = $sce.trustAsHtml(usersShow.user.video);
+    usersShow.video = $sce.trustAsHtml(usersShow.user.video);
 
     usersShow.incrementLikes = userLikes;
     usersShow.isLoggedIn = $auth.isAuthenticated;
@@ -54,11 +54,11 @@ function UsersShowController(User, $state, $auth, $sce) {
 
     if (!usersShow.user.likes.includes(usersShow.authUser) && !!usersShow.authUser) {
       usersShow.user.likes.push(usersShow.authUser);
-      usersShow.user.$update();
     } else if (usersShow.user.likes.includes(usersShow.authUser) && !!usersShow.authUser) {
       usersShow.user.likes.splice(userIdIndex, 1);
-      usersShow.user.$update();
     }
+
+    usersShow.user.$update();
   }
 
   // function userChallenges () {
