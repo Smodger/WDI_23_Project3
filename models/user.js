@@ -6,10 +6,12 @@ const userImages = require('./user_images');
 const userFeedback = require('./user_images');
 
 const userSchema = new mongoose.Schema({
+  facebookId: { type: String }, // Facebook login
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
   locked: { type: Boolean, default: true }, // Lock the User by Default
   confirmationCode: { type: String, default: uuid.v1 },
+  profileImage: { type: String, required: true }, // Facebook login
   passwordHash: { type: String },
   dob: { type: String },
   gender: { type: String },
@@ -39,7 +41,7 @@ function validatePassword(password){
 
 function preValidate(next) {
   if (this.isNew) {
-    if (!this._password) {
+    if (!this._password && !this.facebookId) {
       this.invalidate('password', 'A password is required.');
     }
   }

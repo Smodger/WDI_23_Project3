@@ -4,10 +4,12 @@ const users = require('../controllers/users');
 const challenges = require('../controllers/challenges');
 const stories = require('../controllers/stories');
 const secureRoute = require('../lib/secureRoute');
+const oauthController = require('../controllers/oauth');
 
 router
   .post('/register', authController.register)
   .post('/confirm/:confirmationCode', authController.confirm)
+  .post('/auth/facebook', oauthController.facebook)
   .post('/login', authController.login);
 
 router.route('/users')
