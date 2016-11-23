@@ -3,7 +3,6 @@
 <h1><a ui-sref="storiesCreateEntry({ id: storiesShow.story._id })" ng-if="storiesShow.story.userId._id == storiesShow.authUser">Add an Entry</a></h1>
 <div ng-repeat="entry in storiesShow.story.entries | orderBy:order:true">
   <h1>{{ entry.title }}</h1>
-  <p>Posted on: {{ entry.dateAdded }}</p>
   <h2>{{ entry.shortIntro }}</h2>
   <p>{{ entry.mainContent }}</p>
   <div class="photoHolder">
