@@ -14,20 +14,49 @@ Story.collection.drop();
 console.log('Dropping the story db\'s');
 
 const storyChris = new Story({
-  userid: 'XXX',
-  challengeid: 'XXX',
+  userId: '58356a86fb876110b49bd56f',
+  challengeId: '58356a86fb876110b49bd572',
   entries: [{
     title: 'Haute Route Pyrenees - Stage 1',
-    shortintro: 'Traversing the Pyrenees from coast to coast',
-    mainContent: 'I got tired, hungry and accidentally bought sanitary towels instead of wetwipes',
-    photo: ['https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-0/p370x247/11753287_10206148422102151_1234116927840207915_n.jpg?oh=e7cd9c160c52b8a02607a0fcb92b06a4&oe=58BD7A6A','https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-9/11825906_10204567008567751_3926431220038040428_n.jpg?oh=87e3aba0efeb59c0bfca8636353a4e59&oe=5886FAD6','https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-9/11836630_10204617241263537_4930515482094797742_n.jpg?oh=4a36a1460a5a62b2159f3f47b9318b50&oe=58C12D2F','https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-9/11951838_10204712835093323_9016186575097653050_n.jpg?oh=f3eb49da26d83ebd1f4e75288d261437&oe=58D0B656', 'https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-9/11954682_10204712846813616_9082390366798155313_n.jpg?oh=55badce016a0957d92ac69f253200d59&oe=58BD7DA8'],
+    shortintro: 'Stage 1 - Hendaye to Lescun',
+    mainContent: 'Start of a long walk',
+    photo: ['https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-0/p370x247/11753287_10206148422102151_1234116927840207915_n.jpg?oh=e7cd9c160c52b8a02607a0fcb92b06a4&oe=58BD7A6A'],
+    caption: 'Day 1 on the beach at Hendaye',
     order: 1
+  }, {
+    title: 'Haute Route Pyrenees - Stage 2',
+    shortintro: 'Stage 2 - Lescun to Gavarnie',
+    mainContent: 'Start entering the higher mountains',
+    photo: ['https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-9/11825906_10204567008567751_3926431220038040428_n.jpg?oh=87e3aba0efeb59c0bfca8636353a4e59&oe=5886FAD6'],
+    caption: 'Reach the snowline earlier than expected',
+    order: 2
+  }, {
+    title: 'Haute Route Pyrenees - Stage 3',
+    shortintro: 'Stage 3 - Gavarnie to Salardu',
+    mainContent: 'Craving Coke and chocolate',
+    photo: ['https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-9/11836630_10204617241263537_4930515482094797742_n.jpg?oh=4a36a1460a5a62b2159f3f47b9318b50&oe=58C12D2F'],
+    caption: 'If Carlsberg did campsites',
+    order: 3
+  }, {
+    title: 'Haute Route Pyrenees - Stage 4',
+    shortintro: 'Stage 4 - Salardu to Andorra Viehla',
+    mainContent: 'Fell and nearly died',
+    photo: ['https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-9/11951838_10204712835093323_9016186575097653050_n.jpg?oh=f3eb49da26d83ebd1f4e75288d261437&oe=58D0B656'],
+    caption: 'Lovely cloud inversion',
+    order: 4
+  }, {
+    title: 'Haute Route Pyrenees - Stage 5',
+    shortintro: 'Stage 5 - Andorra Viehla to Banyuls-sur-Mere',
+    mainContent: 'Happy to finish',
+    photo: ['https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-9/11954682_10204712846813616_9082390366798155313_n.jpg?oh=55badce016a0957d92ac69f253200d59&oe=58BD7DA8', 'https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-9/11951838_10204712835093323_9016186575097653050_n.jpg?oh=f3eb49da26d83ebd1f4e75288d261437&oe=58D0B656'],
+    caption: 'Bath time for wild horses',
+    order: 5
   }]
 });
 
 const storyLawrie = new Story({
-  userid: 'xxx',
-  challengeid: 'xxx',
+  userId: '58356a86fb876110b49bd570',
+  challengeId: '58356a86fb876110b49bd573',
   entries: [{
     title: 'Climb Mount Fuiji',
     shortintro: 'A three day expedition climbing one of East Asias most iconic peaks',
@@ -38,8 +67,8 @@ const storyLawrie = new Story({
 });
 
 const storyLuke = new Story({
-  userId: 'XXX',
-  challengeId: 'XXX',
+  userId: '58356a86fb876110b49bd571',
+  challengeId: '58356a86fb876110b49bd572',
   entries: [{
     title: 'So I went on an adventure..',
     shortIntro: 'It started off well',

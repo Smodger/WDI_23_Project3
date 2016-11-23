@@ -198,7 +198,7 @@ userLuke.save((err, userLuke) => {
 
 let challenge3ID;
 const challenge3 = new Challenge({
-  name: 'The HRP',
+  name: 'Haute Route Pyrenees',
   startDate: '01/06/17',
   finishDate: '01/08/17',
   cost: '£2000',
