@@ -51,5 +51,12 @@ function LoginController($auth, $state, User, user) {
       $state.go('home');
     });
   }
+  function authenticate(service) {
+    $auth.authenticate(service)
+    .then(() => {
+      $state.go('home');
+    });
+  }
   login.submit = submit;
+  login.authenticate = authenticate;
 }
