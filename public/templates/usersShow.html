@@ -9,7 +9,7 @@
     <button ng-click="usersShow.incrementLikes(user.user.likes)">Likes: {{ usersShow.user.likes.length }}</button>
   </div>
 
-  <div class="nine columns videoHolder" ng-if="usersShow.user.video" ng-bind-html="usersShow.user.video">
+  <div class="nine columns videoHolder" ng-if="usersShow.video" ng-bind-html="usersShow.video">
     <!-- <iframe width="560" height="315" ng-src="{{ trustAsResourceUrl(usersShow.user.video) }}" frameborder="0" allowfullscreen></iframe> -->
 
   </div>
