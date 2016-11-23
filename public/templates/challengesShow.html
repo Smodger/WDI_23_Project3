@@ -45,7 +45,7 @@
       </form>
 
       <div class="commentList">
-        <ul ng-repeat="challenge in challengesShow.challenge.comments">
+        <ul ng-repeat="challenge in challengesShow.challenge.comments.slice().reverse()">
           <li>{{challenge}}</li>
         </ul>
       </div>
