@@ -76,9 +76,10 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
     });
     if(indexId === -1) {
       challengesShow.challenge.participants.push(challengesShow.userProfile);
-      console.log(challengesShow.challenge.participants);
+      challengesShow.userProfile.activeChallenges.push(challengesShow.challenge._id);
 
       challengesShow.challenge.$update();
+      challengesShow.userProfile.$update();
     }
   }
 
@@ -87,7 +88,9 @@ function ChallengesShowController(Challenge, User, $state, $auth) {
       return payload._id === participant._id;
     });
     challengesShow.challenge.participants.splice(indexId, 1);
+    challengesShow.userProfile.activeChallenges.splice(indexId, 1);
     challengesShow.challenge.$update();
+    challengesShow.userProfile.$update();
   }
 
   function togglePopUp() {
@@ -132,7 +135,7 @@ function ChallengesEditController(Challenge, $state) {
   const challengesEdit = this;
 
   challengesEdit.challenge = Challenge.get($state.params);
-  
+
   function update() {
     challengesEdit.challenge.$update(() => {
       $state.go('challengesShow', $state.params);

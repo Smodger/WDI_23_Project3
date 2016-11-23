@@ -52,14 +52,14 @@ header {
 
 ul.menu {
   @extend .reset-list;
-  height: 120%;
+  height: 100%;
   width: 100%;
-  padding: 25%;
+  padding: 25vh;
 
   background-color: $c-secondary;
 
   opacity: 0;
-  @include positioning(absolute, -120%, 'null', 'null', 0px);
+  @include positioning(absolute, -200%, 'null', 'null', 0px);
   transition: all ease-in 0.4s;
 
   li {

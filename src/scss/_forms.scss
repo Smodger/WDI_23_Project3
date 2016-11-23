@@ -1,7 +1,7 @@
 
 button {
   width: 100%;
-  color: $c_primary !important;
+  color: $c_primary;
   font-size: 1em;
 }
 
@@ -12,6 +12,10 @@ input, textarea, select {
   margin: auto;
   margin-bottom: 30px;
   color: black;
+}
+
+textarea.comments {
+  width: 100%;
 }
 
 form {

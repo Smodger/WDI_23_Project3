@@ -1,63 +1,66 @@
-  <div>
-    <img ng-src="{{challengesShow.challenge.image}}">
+<div class="challenges">
+  <div class="row">
+    <div class="column twelve banner">
+    <h2>{{ challengesShow.challenge.name }}</h2>
+      <img ng-src="{{challengesShow.challenge.image}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns eight">
 
-    <!-- The challenge: {{ challengesShow.challenge }} -->
+      <!-- The challenge: {{ challengesShow.challenge }} -->
 
-      <p>{{ challengesShow.challenge.startDate }} - {{ challengesShow.challenge.finishDate }}</p>
-      <h2>{{ challengesShow.challenge.name }}</h2>
-      <p>{{ challengesShow.challenge.description }}</p>
-      <p>Created by <a ui-sref="usersShow({ id: challengesShow.challenge.participants[0]._id })">{{ challengesShow.challenge.participants[0].username }}</a></p>
+        <p>{{ challengesShow.challenge.startDate }} - {{ challengesShow.challenge.finishDate }}</p>
+        <p>{{ challengesShow.challenge.description }}</p>
+        <p>Created by <a ui-sref="usersShow({ id: challengesShow.challenge.participants[0]._id })">{{ challengesShow.challenge.participants[0].username }}</a></p>
 
-      <google-map challenge="challengesShow.challenge"></google-map>
-
-      <!-- <button ng-click="challengesShow.incrementLikes(challengesShow.challenge.like)">Likes: {{ challengesShow.challenge.like }} </button> -->
-
-      <!-- {{ challengesShow.challenge.participants[0].profilePhoto }} -->
-
-      <h2>Active Participants</h2>
-
-      <img ng-repeat="participant in challengesShow.challenge.participants" class="profileImage" ng-src="{{participant.profilePhoto}}">
-
-
-
-
-      <div ng-show='challengesShow.popUpActive' class="mainPopUp">
-        <a ng-click="challengesShow.togglePopUp()">X</a>
-        <div class="inner">
-          Can you confirm you want to {{ challengesShow.challenge.name }}?
-          <button ng-click="challengesShow.participate(); challengesShow.togglePopUp()">Yes</button>
-          <button ng-click="challengesShow.togglePopUp()">No</button>
-        </div>
       </div>
+      <div class="columns four">
 
-      <button ng-click="challengesShow.incrementLikes()">Likes: {{ challengesShow.challenge.like.length }} </button>
+        <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.isSubscribed()">Subscribe</button>
 
-      <p>
-        This challenge currently has {{ challengesShow.challenge.participants.length }} challengers
-      </p>
+        <button ng-click="challengesShow.Unparticipate()" ng-hide="!challengesShow.isSubscribed()">Unsubscribe</button>
 
-      <button ng-click="challengesShow.togglePopUp()" ng-hide="challengesShow.isSubscribed()">Subscribe</button>
+        <button ui-sref="challengesEdit({ id: challengesShow.challenge._id })" ng-if="challengesShow.challenge.projectCreator[0] == challengesShow.payload._id">Edit Challenge</button>
 
-      <button ng-click="challengesShow.Unparticipate()" ng-hide="!challengesShow.isSubscribed()">Unsubscribe</button>
+        <button ng-click="challengesShow.deleteChallenge()" ng-if="challengesShow.challenge.projectCreator[0] == challengesShow.payload._id">Delete Challenge</button>
 
-      <!-- {{challengesShow.challenge.comments}} -->
+        <button ng-click="challengesShow.incrementLikes()">Likes: {{ challengesShow.challenge.like.length }} </button>
 
+        <p>This challenge currently has {{ challengesShow.challenge.participants.length }} participant</p>
+
+        <p><strong>Active Participants</strong></p>
+        <a ui-sref="usersShow({id: participant._id })"  ng-repeat="participant in challengesShow.challenge.participants">
+          <img class="profileImage participantImage" ng-src="{{participant.profilePhoto}}">
+        </a>
+      </div>
+  </div>
+  <div class="row">
+    <div class="columns twelve">
+      <google-map challenge="challengesShow.challenge"></google-map>
+      <h2>Comments</h2>
       <form ng-submit="challengesShow.addComment()" ng-hide="!profile.isLoggedIn()">
-        <textarea placeholder='Comments' ng-model="challengesShow.comment"></textarea>
+        <textarea placeholder='Comments' ng-model="challengesShow.comment" class="comments"></textarea>
         <button ng-hide="!profile.isLoggedIn()">Submit Comment</button>
       </form>
 
       <div class="commentList">
-        <h2>Comments</h2>
         <ul ng-repeat="challenge in challengesShow.challenge.comments">
           <li>{{challenge}}</li>
         </ul>
       </div>
-<!-- 
-      {{ challengesShow.payload._id }}
-      {{ challengesShow.challenge.projectCreator }} -->
-
-      <button ui-sref="challengesEdit({ id: challengesShow.challenge._id })" ng-if="challengesShow.challenge.projectCreator[0] == challengesShow.payload._id">Edit Challenge</button>
-
-      <button ng-click="challengesShow.deleteChallenge()" ng-if="challengesShow.challenge.projectCreator[0] == challengesShow.payload._id">Delete Challenge</button>
+    </div>
   </div>
+</div>
+
+<div ng-show='challengesShow.popUpActive' class="mainPopUp">
+  <div class="popupHolder">
+    <a ng-click="challengesShow.togglePopUp()" class="close">X</a>
+    <div class="inner">
+      <p><strong>Please confirm you want to participate in the challenge:  {{ challengesShow.challenge.name }}?</strong></p>
+      <small>By agreeing, you are agreeing to our terms and conditions, and confirming you understand and are willing to commit to the physical, mental and financial obligations of this challenge.</small>
+      <button ng-click="challengesShow.participate(); challengesShow.togglePopUp()">Yes</button>
+      <button ng-click="challengesShow.togglePopUp()">No</button>
+    </div>
+  </div>
+</div>
