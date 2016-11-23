@@ -93,14 +93,16 @@ const storyLuke = new Story({
 storyChris.save((err, storyChris) => {
   if(err) return console.log(err);
   console.log('storyChris was created', storyChris);
-});
 
-storyLawrie.save((err, storyLawrie) => {
-  if(err) return console.log(err);
-  console.log('storyLawrie was created', storyLawrie);
-});
+  storyLawrie.save((err, storyLawrie) => {
+    if(err) return console.log(err);
+    console.log('storyLawrie was created', storyLawrie);
 
-storyLuke.save((err, storyLuke) => {
-  if(err) return console.log(err);
-  console.log('storyLuke was created', storyLuke);
+    storyLuke.save((err, storyLuke) => {
+      if(err) return console.log(err);
+      console.log('storyLuke was created', storyLuke);
+    });
+
+    mongoose.connection.close();
+  });
 });
