@@ -16,6 +16,11 @@
 
       &.currentChallenge {
         margin-bottom: 40px;
+        button {
+          &:after {
+            content: 'Participate!'
+          }
+        }
       }
       &.futureChallenge {
         width: 33.3333%;
