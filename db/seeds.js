@@ -135,7 +135,7 @@ const user3 = new User({
   strapline: 'I am allergic to Camels',
   bio: 'Aspiring Gryffindor',
   coverPhoto: 'https://scontent.flhr2-2.fna.fbcdn.net/v/t1.0-9/11951838_10204712835093323_9016186575097653050_n.jpg?oh=f3eb49da26d83ebd1f4e75288d261437&oe=58D0B656',
-  profilePhoto: 'https://www.facebook.com/photo.php?fbid=10204712823773040&set=pcb.10204712849173675&type=3&theater',
+  profilePhoto: 'https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/11951109_10204712823773040_2398717380581520929_n.jpg?oh=af55c1e4ff1220ccb1aee997b4eac626&oe=58D22DE1',
   // activeChallenges: [],
   like: [], //User
   locked: false
@@ -144,7 +144,7 @@ const user3 = new User({
 user3.save((err, user3) => {
   if(err) return console.log(err);
   console.log(user3 + ' Was created!');
-  user2ID = user3._id;
+  user3ID = user3._id;
   console.log('User3 id is: ', user3ID);
 });
 

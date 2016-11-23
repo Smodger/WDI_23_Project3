@@ -14,8 +14,8 @@ Story.collection.drop();
 console.log('Dropping the story db\'s');
 
 const storyChris = new Story({
-  userId: '58356a86fb876110b49bd56f',
-  challengeId: '58356a86fb876110b49bd572',
+  userId: '5835758029136a00043e5b32',
+  challengeId: '5835758029136a00043e5b35',
   entries: [{
     title: 'Haute Route Pyrenees - Stage 1',
     shortintro: 'Stage 1 - Hendaye to Lescun',
@@ -55,8 +55,8 @@ const storyChris = new Story({
 });
 
 const storyLawrie = new Story({
-  userId: '58356a86fb876110b49bd570',
-  challengeId: '58356a86fb876110b49bd573',
+  userId: '5835758029136a00043e5b30',
+  challengeId: '5835758029136a00043e5b36',
   entries: [{
     title: 'Climb Mount Fuiji',
     shortintro: 'A three day expedition climbing one of East Asias most iconic peaks',
@@ -67,8 +67,8 @@ const storyLawrie = new Story({
 });
 
 const storyLuke = new Story({
-  userId: '58356a86fb876110b49bd571',
-  challengeId: '58356a86fb876110b49bd572',
+  userId: '5835758029136a00043e5b34',
+  challengeId: '5835758029136a00043e5b35',
   entries: [{
     title: 'So I went on an adventure..',
     shortIntro: 'It started off well',
