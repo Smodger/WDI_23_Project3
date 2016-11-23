@@ -3,6 +3,9 @@ button {
   width: 100%;
   color: $c_primary;
   font-size: 1em;
+  &:hover {
+    background-color: $c_primary;
+  }
 }
 
 input, textarea, select {
