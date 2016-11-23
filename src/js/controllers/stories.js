@@ -60,7 +60,7 @@ function StoriesCreateEntryController(Story, $state, $auth) {
 
   function addEntry() {
     storiesCreateEntry.story.entries.push(storiesCreateEntry.new);
-
+    console.log(storiesCreateEntry.story.entries);
     storiesCreateEntry.story.$update(() => {
       $state.go('storiesShow', $state.params );
     });

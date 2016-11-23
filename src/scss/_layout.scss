@@ -1,5 +1,10 @@
 // LANDING BACKGROUND
-.content { margin: 100px 0 0 0; }
+.content {
+  padding: 80px 0 0 0;
+  a:hover {
+    color: $c_secondary;
+  }
+}
 .holder {
   height:50vh;
   width: 100vw;
@@ -8,8 +13,12 @@
   @include basicAbsolute(0,0);
   z-index: 1;
 
+  box-shadow: 0px 0px 5px 5px rgba($c_secondary, 0.3);
+
   img.hero {
-    width: 100%;
+    min-width: 100%;
+    max-width: 110%;
+    min-height: 600px;
 
     margin: 0;
     padding: 0;

@@ -84,8 +84,6 @@ UsersEditController.$inject = ['User', '$state', '$auth', 'user'];
 function UsersEditController(User, $state, $auth, user) {
   const usersEdit = this;
 
-  console.log(user);
-
   usersEdit.authUser = $auth.getPayload();
   if (usersEdit.authUser) {
     usersEdit.authUser = usersEdit.authUser._id;
@@ -93,7 +91,6 @@ function UsersEditController(User, $state, $auth, user) {
 
   User.get({ id: usersEdit.authUser }).$promise.then((data) => {
     usersEdit.user = data;
-    console.log(usersEdit.user);
   });
 
 

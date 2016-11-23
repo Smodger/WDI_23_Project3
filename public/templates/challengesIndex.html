@@ -1,14 +1,22 @@
-<div class="challenges" ng-controller="ChallengesIndexController as challenges">
-<button type="button" ui-sref="challengesNew" ng-hide="!profile.isLoggedIn()" class="addChallenge">Add a challenge</button>
+<div class="challenges">
+<!-- <button type="button"  ng-hide="!profile.isLoggedIn()" class="addChallenge">Add a challenge</button> -->
 
 
 
   <ul>
-    <li ng-repeat="challenge in challenges.all" ng-class="$first? 'currentChallenge' : 'futureChallenge' ">
+    <li ng-repeat="challenge in challengesIndex.all" ng-class="$first? 'currentChallenge' : 'futureChallenge' ">
       <a ui-sref="challengesShow({id: challenge._id})">
-        <span ng-if="$first">{{ challenge.name }}</span>
-        <img ng-src="{{ challenge.image }}">
-        <p ng-if="!$first">{{ challenge.name }}</p>
+        <div ng-if="$first">
+          <h1>{{ challenge.name }}</h1>
+          <img ng-src="{{ challenge.image }}">
+          <p>Location: {{ challenge.placeName }} | cost: {{ challenge.cost | currency: '£' }} | Start Date: {{ challenge.startDate | date: 'medium'}}</p>
+          <button>View more info</button>
+        </div>
+        <div ng-if="!$first">
+          <img ng-src="{{ challenge.image }}">
+          <p>{{ challenge.name }}</p>
+          <button></button>
+        </div>
       </a>
     </li>
   </ul>

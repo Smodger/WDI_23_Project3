@@ -1,19 +1,35 @@
 <form novalidate ng-submit="storiesCreateEntry.addEntry()">
   <div class="row">
+    <div class="six columns offset-by-three">
     <label>Entry Title</label>
     <input class="" type="text" placeholder="e.g. I fell" ng-model="storiesCreateEntry.new.title">
   </div>
   <div class="row">
+    <div class="six columns offset-by-three">
     <label>Short Intro</label>
     <input class="" type="text" placeholder="e.g. a cool strapline" ng-model="storiesCreateEntry.new.shortIntro">
   </div>
+  </div>
   <div class="row">
+    <div class="six columns offset-by-three">
     <label>Main Content</label>
     <input class="" type="text" placeholder="e.g. all my really cool adventures" ng-model="storiesCreateEntry.new.mainContent">
   </div>
+  </div>
   <div class="row">
+    <div class="six columns offset-by-three">
     <label>Order</label>
     <input class="" type="text" placeholder="e.g. 1" ng-model="storiesCreateEntry.new.order">
   </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="six columns offset-by-three">
+      <label for="images">Images</label>
+      <input type="text" name="image1" id="image1" ng-model="storiesCreateEntry.new.photos[0]" placeholder="Image 1" />
+      <input type="text" name="image2" id="image2" ng-model="storiesCreateEntry.new.photos[1]" placeholder="Image 2" />
+      <input type="text" name="image3" id="image3" ng-model="storiesCreateEntry.new.photos[2]" placeholder="Image 3" />
+    </div>
+  </div> -->
   <button>Submit</button>
 </form>

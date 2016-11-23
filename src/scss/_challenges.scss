@@ -1,50 +1,112 @@
-.futureChallenge {
-  display: inline-block;
-  margin: 50px;
-  a {
-    text-align: center;
-    display: block;
-  }
-  img {
-    width: 60%;
-    height: 60%;
-    border-radius: 5px;
-  }
-}
-
 .challenges {
+  //Index
   ul {
-    list-style: none;
+    @extend .reset-list;
+    li {
+      @extend .reset-list;
+      padding: 20px 15px;
+
+      border-radius: 5px;
+
+      transition: all 0.2s;
+      img {
+        width: 100%;
+        border-radius: 5px;
+      }
+
+      &.currentChallenge {
+        margin-bottom: 40px;
+      }
+      &.futureChallenge {
+        width: 33.3333%;
+        float:left;
+        img {
+          width: 60%;
+          height: 60%;
+        }
+      }
+      a {
+        text-align: center;
+        display: block;
+      }
+
+      button {
+        &:after {
+          content: 'Coming Soon'
+        }
+      }
+
+      &:hover {
+        background-color: rgba($c_primary, 0.15);
+        button {
+          background-color: $c_primary;
+          color: $c_tertiary;
+          &:after {
+            content: 'More Details'
+          }
+        }
+      }
+    }
+  }
+  // Show
+  .banner {
+    img {
+      width: 100%;
+    }
   }
 }
 
-.currentChallenge {
-  text-align: center;
-  img {
-    width: 100%;
-    border-radius: 5px;
-  }
-  a {
-    display: block;
-  }
+.participantImage {
+  margin: 0 4px;
 }
 
 .mainPopUp {
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+
+  padding: 20% 20%;
+  @include positioning(fixed, 0, 'null', 'null', 0%);
   z-index: 10;
-  background-color: rgba(0,0,0,0.5);
-  .inner {
-    background-color: white;
-    color: black;
-    width: 400px;
-    height: 500px;
-    z-index: 1;
-    button {
-      color: black !important;
+  background-color: rgba($c_secondary, 0.7);
+
+  .popupHolder {
+    height: 100%;
+    width: 100%;
+    min-height: 400px;
+    min-width: 400px;
+    padding: 20px;
+    background-color: rgba($c_secondary, 0.5);
+    border-radius: 25px;
+    position: relative;
+    .close {
+      height: 33px;
+      width: 33px;
+      background-color: $c_secondary;
+      border-radius: 15px;
+      @include positioning(absolute, -20px, -10px, 'null', 'null');
+
+      text-align: center;
+      &:hover {
+        color: $c_tertiary;
+        cursor: pointer;
+      }
+    }
+    .inner {
+      height:100%;
+      width: 100%;
+      padding: 20px;
+      background-color: $c_primary;
+      border-radius: 12px;
+      small {
+        display: block;
+        padding-bottom: 20px;
+      }
+      * {
+        color: $c_secondary;
+      }
+      button {
+        color: $c_secondary;
+      }
     }
   }
 }
@@ -60,12 +122,6 @@
   border-radius: 60px;
   width: 100px;
   height: 100px;
-}
-
-.addChallenge {
-  width: auto;
-  margin-right: calc(50%-200px);
-  margin-bottom: 50px;
 }
 
 

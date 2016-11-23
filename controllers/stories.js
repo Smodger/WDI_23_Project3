@@ -42,6 +42,7 @@ function storysShow(req, res) {
 //UPDATE
 function storysUpdate(req, res) {
   story.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, story) => {
+    console.log(err);
     if (err) return res.status(500).json({error: err});
     if (!story) return res.status(404).json({error: 'NOT FOUND!'});
     return res.status(200).json(story);

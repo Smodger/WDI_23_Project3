@@ -6,15 +6,17 @@
   padding: 0;
   box-sizing: border-box;
 
-  color: $c_primary;
   font-family: $f_primary;
   font-size: 20px;
 }
 
 body {
 	background-color: rgb(240,20,113);
+  color: $c_primary;
   // background-color: rgba(200,30,90,1);
-
+  height: auto;
+  width:100%;
+  overflow-x: hidden;
 }
 
 .container {
@@ -42,8 +44,13 @@ h1 {
   margin-bottom: 25px;
 }
 
-p, a {
+p, a, small {
   font-family: $f_secondary;
+}
+
+small {
+  font-size: 0.8em;
+  line-height: 1.5em;
 }
 
 
