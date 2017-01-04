@@ -98,7 +98,7 @@ Auth.$inject = ['$authProvider'];
 function Auth($authProvider) {
 
   $authProvider.facebook({
-    clientId: '199317997186512'
+    clientId: '922512684546745'
   });
 
   $authProvider.tokenPrefix = '';

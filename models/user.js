@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   locked: { type: Boolean, default: true }, // Lock the User by Default
   confirmationCode: { type: String, default: uuid.v1 },
-  profileImage: { type: String, required: true }, // Facebook login
+  profileImage: { type: String }, // Facebook login
   passwordHash: { type: String },
   dob: { type: String },
   gender: { type: String },
