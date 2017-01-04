@@ -2,20 +2,16 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 const Challenge = require('../models/challenge');
 const Story = require('../models/story');
-
 //  If wanting to remove the promise warning on running the seeds file..
 const Promise = require('bluebird');
 mongoose.Promise = Promise;
-
 const db = require('../config/db');
 mongoose.connect(db.uri);
-
 Story.collection.drop();
 console.log('Dropping the story db\'s');
-
 const storyChris = new Story({
-  userId: '5835758029136a00043e5b32',
-  challengeId: '5835758029136a00043e5b35',
+  userId: '586cf6da34b15e32890e45e1',
+  challengeId: '586cf6da34b15e32890e45e4',
   entries: [{
     title: 'Haute Route Pyrenees - Stage 1',
     shortIntro: 'Stage 1 - Hendaye to Lescun',
@@ -53,22 +49,20 @@ const storyChris = new Story({
     order: 5
   }]
 });
-
 const storyLawrie = new Story({
-  userId: '5835758029136a00043e5b30',
-  challengeId: '5835758029136a00043e5b36',
+  userId: '586cf6da34b15e32890e45e2',
+  challengeId: '586cf6db34b15e32890e45e7',
   entries: [{
-    title: 'Climb Mount Fuiji',
+    title: 'The Long Way Round',
     shortIntro: 'A three day expedition climbing one of East Asias most iconic peaks',
     mainContent: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     photos: ['http://jpninfo.com/wp-content/uploads/2015/07/climbing-Mt.Fuji3_.jpg','http://1stforeverything.com/wp-content/uploads/2013/08/Climbing-Mt.-Fuji.jpg','http://i.huffpost.com/gen/1114412/images/h-MOUNT-FUJI-WORLD-HERITAGE-628x314.jpg'],
     order: 1
   }]
 });
-
 const storyLuke = new Story({
-  userId: '5835758029136a00043e5b34',
-  challengeId: '5835758029136a00043e5b35',
+  userId: '586cf6da34b15e32890e45e3',
+  challengeId: '586cf6da34b15e32890e45e5',
   entries: [{
     title: 'So I went on an adventure..',
     shortIntro: 'It started off well',
@@ -89,20 +83,16 @@ const storyLuke = new Story({
     order: 1
   }]
 });
-
 storyChris.save((err, storyChris) => {
   if(err) return console.log(err);
   console.log('storyChris was created', storyChris);
-
-  storyLawrie.save((err, storyLawrie) => {
-    if(err) return console.log(err);
-    console.log('storyLawrie was created', storyLawrie);
-
-    storyLuke.save((err, storyLuke) => {
-      if(err) return console.log(err);
-      console.log('storyLuke was created', storyLuke);
-    });
-
-    mongoose.connection.close();
-  });
 });
+storyLawrie.save((err, storyLawrie) => {
+  if(err) return console.log(err);
+  console.log('storyLawrie was created', storyLawrie);
+});
+storyLuke.save((err, storyLuke) => {
+  if(err) return console.log(err);
+  console.log('storyLuke was created', storyLuke);
+});
+mongoose.connection.close();
