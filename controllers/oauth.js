@@ -14,7 +14,7 @@ function facebook(req, res) {
     },
     json: true
   }).then((accessToken) => {
-    // console.log(accessToken);
+    //console.log(accessToken);
     // request user's profile with accessToken
     return request.get({
       url: 'https://graph.facebook.com/v2.5/me?fields=id,name,email,picture',
@@ -23,11 +23,11 @@ function facebook(req, res) {
     });
 
   }).then((profile) => {
-    // console.log(profile);
+    console.log(profile);
     // find or create a user
     User.findOne({ email: profile.email}, (err, user) => {
       if(err) res.status(500).json({ error: err });
-
+      //console.log(err);
       if(!user) {
         user = new User({
           facebookId: profile.id,
@@ -41,6 +41,7 @@ function facebook(req, res) {
       }
 
       user.save((err, user) => {
+        console.log(err);
         if(err) return res.status(400).json({ error: err });
 
         // generate JWT and send to the client

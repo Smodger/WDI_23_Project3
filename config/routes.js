@@ -1,16 +1,15 @@
 const router = require('express').Router();
-const authController = require('../controllers/auth');
 const users = require('../controllers/users');
 const challenges = require('../controllers/challenges');
 const stories = require('../controllers/stories');
 const secureRoute = require('../lib/secureRoute');
+const authController = require('../controllers/auth');
 const oauthController = require('../controllers/oauth');
 
 router
   .post('/register', authController.register)
-  .post('/confirm/:confirmationCode', authController.confirm)
-  .post('/auth/facebook', oauthController.facebook)
-  .post('/login', authController.login);
+  .post('login', authController.login)
+  .post('/auth/facebook', oauthController.facebook);
 
 router.route('/users')
   .get(users.index)
@@ -40,7 +39,5 @@ router.route('/stories/:id')
   .put(stories.update)
   .patch(secureRoute, stories.update)
   .delete(secureRoute, stories.delete);
-
-
 
 module.exports = router;

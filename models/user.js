@@ -7,7 +7,7 @@ const userFeedback = require('./user_images');
 
 const userSchema = new mongoose.Schema({
   facebookId: { type: String }, // Facebook login
-  username: { type: String, unique: true, required: true },
+  username: { type: String, required: true },
   email: { type: String, unique: true, required: true },
   locked: { type: Boolean, default: true }, // Lock the User by Default
   confirmationCode: { type: String, default: uuid.v1 },

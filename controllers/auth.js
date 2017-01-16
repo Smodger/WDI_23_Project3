@@ -9,7 +9,7 @@ function register(req, res){
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
 
     mailer.sendMail(user, (err) => {
-      console.log(err);
+      //console.log("error", err);
       if (err) return res.status(500).json({ message: 'Something went wrong.' });
 
       const payload = { _id: user._id, username: user.username };
